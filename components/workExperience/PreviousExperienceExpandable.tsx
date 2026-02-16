@@ -6,7 +6,7 @@ import { useOutsideClick } from "@/hooks/useOutsideClicks";
 
 export default function PreviousExperienceExpandable() {
   const [active, setActive] = useState<(typeof jobs)[number] | boolean | null>(
-    null
+    null,
   );
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
@@ -268,6 +268,61 @@ const jobs = [
     content: () => {
       const desc = [
         "Feature building in React and Ruby on Rails.",
+        "Agile, Scrum.",
+        "Code optimization and troubleshooting.",
+      ];
+      return (
+        <ul className="mt-1 list-none text-left text-base">
+          {desc.map((str, index): React.ReactNode => {
+            return (
+              <li className="mb-2" key={index + 1}>
+                {str}
+              </li>
+            );
+          })}
+        </ul>
+      );
+    },
+  },
+  {
+    description: "Full Stack Engineer - Partime",
+    title: "FyrKode Software Studio",
+    src: "/fyrkode-hero-logo-lighthouse.png",
+    ctaText: "Learn More",
+    ctaLink: "https://fyrkode.com/",
+    location: "Winter Park, CO USA",
+    years: ["2024", "present"],
+    stack: () => {
+      const stack = [
+        "JavaScript",
+        "TypeScript",
+        "ReactJS",
+        "React Native",
+        "CSS",
+        "SASS",
+        "JAVA",
+        "SpringBoot",
+        "AWS",
+        "PostgreSQL",
+        "Agile",
+        "Jira",
+        "Github",
+      ];
+      return (
+        <div className="flex gap-2 lg:justify-normal flex-wrap mt-2 text-xs">
+          {stack.map((str, index): React.ReactNode => {
+            return (
+              <span className="text-yellow-200 text-xs" key={index + 1}>
+                {str}
+              </span>
+            );
+          })}
+        </div>
+      );
+    },
+    content: () => {
+      const desc = [
+        "Feature building in ReactJS, React Native and Java.",
         "Agile, Scrum.",
         "Code optimization and troubleshooting.",
       ];
