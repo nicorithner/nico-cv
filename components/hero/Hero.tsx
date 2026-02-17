@@ -36,9 +36,9 @@ const Hero = () => {
           height={500}
         />
 
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center ">
           <TextGenerateEffect
-            className="text-center text-[50rem] sm:text-2xl md:text-5xl lg:text-8xl"
+            className="text-center text-3xl md:text-5xl lg:text-8xl"
             words="NICO RITHNER"
           />
 
