@@ -322,6 +322,8 @@ const jobs = [
     },
     content: () => {
       const desc = [
+        "Web and mobile app development",
+        "Website development",
         "Feature building in ReactJS, React Native and Java.",
         "Agile, Scrum.",
         "Code optimization and troubleshooting.",

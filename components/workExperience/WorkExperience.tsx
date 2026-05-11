@@ -56,7 +56,7 @@ export default function WorkExperience() {
                   );
                 })}
               </div>
-              <ul className="mt-1 list-none text-left text-xs lg:text-base">
+              <ul className="mt-1 list-disc pl-5 text-left text-xs lg:text-base">
                 {currentJob[0].desc.map((str, index): React.ReactNode => {
                   return <li key={index + 1}>{str}</li>;
                 })}
