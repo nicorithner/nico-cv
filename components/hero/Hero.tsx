@@ -1,4 +1,3 @@
-import React from "react";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 import MagicButton from "../buttons/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
@@ -10,7 +9,7 @@ const Hero = () => {
   const words = [
     {
       text: "Fullstack",
-      className: "text-blue-500 dark:text-blue-500",
+      className: "text-brand",
     },
     {
       text: "Software",

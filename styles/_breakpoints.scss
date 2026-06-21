@@ -1,0 +1,25 @@
+// Mirrors the breakpoints in tailwind.config.ts so converted components
+// keep the same responsive behavior. Sass variables, not CSS custom
+// properties, because @media conditions can't read custom properties.
+$breakpoint-sm: 300px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+$breakpoints: (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  2xl: $breakpoint-2xl,
+);
+
+@mixin respond-to($breakpoint) {
+  @if not map-has-key($breakpoints, $breakpoint) {
+    @error "Unknown breakpoint `#{$breakpoint}`. Expected one of #{map-keys($breakpoints)}.";
+  }
+  @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
