@@ -73,21 +73,21 @@ Reasoning: lock the decisions everything else inherits from before touching comp
 
 1. **Lock foundational decisions**
    - [x] Pick the single accent color — **decided**: Apple's adaptive blue pair, added as a `--color-brand` token in `globals.css` (`#0071e3` light / `#2997ff` dark). Previewed on the hero name + "Fullstack" word, confirmed.
-   - [x] Pick the font — **decided**: Geist (via `next/font/google`), replacing `Plus_Jakarta_Sans` in `app/layout.tsx`.
+   - [x] Pick the font — **decided**: Geist (via the `geist` package, `geist/font/sans`), replacing `Plus_Jakarta_Sans` in `app/layout.tsx`.
    - [ ] Decide the 2-3 signature moments to actually build (see step 5 below).
 
 2. **Fix the theme token system + move it off Tailwind**
    - [x] Add the chosen accent as a token (`--color-brand`) instead of hardcoding hex/Tailwind color names per component.
-   - [ ] Port the `--color-*` custom properties out of Tailwind's `@theme`/`@layer` blocks into a plain global stylesheet (`:root { }` / `.dark { }`), so they're available as `var(--color-brand)` etc. to plain SCSS/CSS Modules regardless of Tailwind.
-   - [ ] Switch `defaultTheme` in `app/layout.tsx` from `"dark"` to `"system"` so it respects OS preference.
-   - [ ] Spot-check every section in both light and dark mode once tokens are wired through — light mode is currently broken/untested.
-   - (Hardcoded colors per-component — `bg-slate-900`, `rgb(4,7,29)` navy, `text-yellow-200`, etc. — get replaced when each section is ported to SCSS in step 4, not here.)
+   - [x] Type scale, spacing scale, radius/elevation/motion tokens, and the breakpoints Sass mixin are all in place (see Styling architecture above) — verified collision-free against Tailwind's own theme namespace.
+   - [x] Switch `defaultTheme` in `app/layout.tsx` from `"dark"` to `"system"` so it respects OS preference.
+   - [x] Spot-checked light + dark via Playwright screenshots — no console errors either way, `--color-brand` renders correctly in both. Remaining light-mode roughness is exactly the known hardcoded-dark-background cards (About, Work Experience) — not a new regression, fixed when those sections are ported in step 4.
+   - (Porting the `--color-*` custom properties out of Tailwind's `@theme` into the plain stylesheet happens in step 6, once nothing still depends on Tailwind generating them — not here. Hardcoded per-component colors — `bg-slate-900`, `rgb(4,7,29)` navy, `text-yellow-200`, etc. — get replaced when each section is ported to SCSS in step 4.)
 
-3. **Strip dead/leftover code site-wide**
-   - [ ] Remove `PatternBackground` (dotted grid) from Hero.
-   - [ ] Remove `TypewriterEffect`, replace with a static subtitle line.
-   - [ ] Remove `AnimatedBorderCard` / `MovingBorderCard` glow usage; remove the `01 02 03 04` tab artifact.
-   - [ ] Strip the glow styling out of `MagicButton` (keep the component, simplify the visual).
+3. **Strip dead/leftover code site-wide** — done, verified via build + `tsc` + `eslint` + Playwright spot-check (light/dark, zero console errors):
+   - [x] Removed `PatternBackground` (dotted grid) from Hero; deleted the now-unused component file.
+   - [x] Removed `TypewriterEffect`, replaced with a static subtitle line (`Fullstack Software Developer`, brand-colored word); deleted the now-unused component file (`TypewriterEffectSmooth` was also dead, deleted with it).
+   - [x] Removed `AnimatedBorderCard` usage in `WorkExperience` (replaced with a plain `bg-card` div, no border/glow); deleted both `AnimatedBorderCard` and `MovingBorderCard` (the latter had zero consumers already).
+   - [x] Stripped the conic-gradient glow out of `MagicButton`; now a plain `bg-primary`/`text-primary-foreground` button, same props/API.
 
 4. **Section-by-section refactor — port to SCSS (CSS Modules) + apply new design together**, ordered by current gap size (smallest first, so momentum builds and the accent/font choices get validated early):
    - [ ] Tech Stack — `TechStack.module.scss`, switch to borderless icon-tile grid + stat tile, remove hover `scale(1.2)` bounce.

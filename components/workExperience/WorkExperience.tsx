@@ -1,5 +1,4 @@
 import React from "react";
-import AnimatedBorderCard from "../ui/AnimatedBorderCard";
 import { currentJob } from "../../data";
 import ResumeLink from "./ResumeLink";
 import PreviousExperienceExpandable from "./PreviousExperienceExpandable";
@@ -16,15 +15,9 @@ export default function WorkExperience() {
       </h1>
 
       <div className="w-full mt-12 gap-2 lg:gap-10">
-        <AnimatedBorderCard
+        <div
           key={currentJob[0].id}
-          borderRadius="1.75rem"
-          style={{
-            background: "rgb(4,7,29)",
-            backgroundColor:
-              "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-          }}
-          className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+          className="flex-1 rounded-[1.75rem] bg-card text-card-foreground"
         >
           <div className="flex flex-col p-3 py-6 md:p-5 lg:p-10 gap-4 w-full">
             <Image
@@ -63,7 +56,7 @@ export default function WorkExperience() {
               </ul>
             </div>
           </div>
-        </AnimatedBorderCard>
+        </div>
       </div>
       <PreviousExperienceExpandable />
       <div className="flex flex-col lg:flex-row justify-center items-center p-10 gap-3">
