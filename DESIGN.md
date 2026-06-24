@@ -21,8 +21,9 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 
 ## Baseline style (applies everywhere)
 
-- **Typography**: large, confident headings, tight tracking, generous line-height on body text. Inter or Geist as the SF Pro stand-in. Some bold graphic accents are wanted (confirmed direction, reference: dark portfolio screenshot, 2026-06-21): an italicized accent-colored word in the hero name, a bordered pill/badge around the role title, chunky pill-shaped CTA buttons — more graphic than a plain Apple headline, layered on top of the calm baseline rather than replacing it.
+- **Typography**: large, confident headings, tight tracking, generous line-height on body text. Inter or Geist as the SF Pro stand-in. Some bold graphic accents are wanted (confirmed direction, reference: dark portfolio screenshot, 2026-06-21): an italicized accent-colored word in the hero name, a bordered pill/badge around the role title, chunky CTA buttons — more graphic than a plain Apple headline, layered on top of the calm baseline rather than replacing it.
 - **Color**: near-monochrome (white/black + neutral grays), one accent color used sparingly. Drop the purple/yellow/blue mix currently in use.
+- **Shape language** (decided 2026-06-24): the Tech Stack hexagon tiles aren't a one-off — they're the seed of a unifying angular motif. Echo it as a single 45° chamfered corner (top-right, via the `corner-cut($size)` mixin in `styles/_shapes.scss`) on hard-edged interactive chrome: CTA buttons (done, `MagicButton`), and later small UI accents (bullets, dividers, hover indicators) once their sections are ported. Applied sparingly and only to one corner so it reads as a deliberate accent, not a sci-fi UI kit. This is interactive-chrome-only — section/card container edges stay soft per the no-hard-edges rule below, not chamfered.
 - **Spacing**: full-height-ish sections, more breathing room between blocks than the current bento-grid density.
 - **Section boundaries**: confirmed direction (reference: dark portfolio screenshots, 2026-06-21) — keep distinct sections/cards (About, Tech Stack, Work Experience stay separate blocks), but drop hard borders/outlines between them. Transitions should read as soft/shared background (subtle gradient or background-shade shift) rather than boxed edges, so the page feels continuous even though content is still organized into cards. This applies to section/card-level edges only — small UI chrome (pills, badges, buttons) keeping a thin border is fine and part of the typographic-accent direction above.
 - **Motion**: scroll-triggered fade/slide-up on section entry (Framer Motion `whileInView`), no looping/ambient animation by default.
@@ -38,7 +39,7 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 ## Components likely worth keeping (re-skinned)
 
 - `TextGenerateEffect` for the name — fine as a one-time reveal, just restyle.
-- `MagicButton` — simplify to a clean pill/underline CTA, drop the glow.
+- `MagicButton` — simplify to a clean cut-corner CTA (see Shape language above), drop the glow. **Done** — ported to `MagicButton.module.scss`, glow removed, single top-right chamfered corner added.
 
 ~~Globe (`cobe`) in About~~ — removed entirely (done, see Cleanup Plan).
 
@@ -48,7 +49,7 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 - Drop the dotted grid background.
 - Name as large static type (no typewriter), with one word in the accent color, italicized (graphic-accent direction). Role/title sits in a bordered pill badge underneath, one calm subtitle treatment overall.
 - Floating callout card overlapping/flanking the headshot (reference pattern) — but only one, stat-style, since there's no testimonial content to fill a second card. Content TBD when we build this section (candidates: years of experience, current role/employer, or language count — decide then).
-- CTA button below becomes a chunky pill shape (ties into the typographic-accent direction), not the current bordered-glow `MagicButton`.
+- CTA button below gets a single top-right chamfered corner instead of full rounding (ties into the hex-derived shape-language motif, see Baseline style above) — **done**, drops the old bordered-glow `MagicButton` look.
 - Candidate signature moment: cursor-reactive subtle gradient/glow behind the headshot, instead of the grid pattern.
 
 ### About
@@ -59,7 +60,7 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 - Include one wider stat tile alongside the icon tiles (reference pattern: "4 Years Experience" callout) — gives the grid an asymmetric focal point instead of being purely uniform icons.
 
 ### Work Experience
-- Replace `AnimatedBorderCard` with a borderless card — no outline at all, just a background-shade shift from the page background (consistent with the no-hard-edges direction) — and clean divider lines between roles instead of a glowing border.
+- Replace `AnimatedBorderCard` with a borderless card — no outline at all, just a background-shade shift from the page background (consistent with the no-hard-edges direction) — and clean divider lines between roles instead of a glowing border. Apply the shape-language corner-cut accent (see Baseline style) to small chrome here — list bullets, divider end-caps, hover indicators — not the card edges themselves.
 - Remove the leftover `01 02 03 04` decorative tab strip artifact in the top-left corner of the current job card (dead chrome from the border-animation component, not intentional UI).
 - Company imagery (Booz Allen marketing banner, FyrKode logo tile, ProductPlan dashboard screenshot) is visually inconsistent — different crops/styles/colors. Needs a consistent treatment (e.g. uniform aspect ratio + crop, or a consistent logo-on-neutral-bg treatment) rather than raw screenshots.
 - Consider an asymmetric showcase layout for this (reference pattern: one large image + a row of smaller cropped images with captions) instead of uniform stacked cards, once the imagery-consistency issue above is fixed — raw inconsistent screenshots would undermine this layout more than the current stacked one.

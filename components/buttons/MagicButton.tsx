@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./MagicButton.module.scss";
 
 const MagicButton = ({
   title,
@@ -15,8 +16,7 @@ const MagicButton = ({
 }) => {
   return (
     <button
-      className={`inline-flex h-12 w-full md:w-60 cursor-pointer items-center justify-center gap-2 rounded-lg
-           bg-primary px-7 text-base sm:text-xs lg:text-lg font-medium text-primary-foreground focus:outline-none ${otherClasses}`}
+      className={`${styles.button} ${otherClasses ?? ""}`}
       onClick={handleClick}
     >
       {position === "left" && icon}
