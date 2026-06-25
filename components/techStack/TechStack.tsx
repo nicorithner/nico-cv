@@ -1,68 +1,51 @@
-"use client";
 import {
-  AmazonwebservicesOriginalWordmark,
+  AmazonwebservicesPlainWordmark,
   Css3Plain,
-  GithubOriginal,
-  GitPlain,
   JavaOriginal,
   JavascriptOriginal,
-  JiraPlain,
-  PostgresqlPlain,
-  RailsPlain,
+  NextjsOriginal,
   ReactOriginal,
-  RspecOriginal,
   RubyPlain,
-  SassOriginal,
-  SentryOriginal,
-  SpringOriginal,
-  SqldeveloperOriginal,
-  TailwindcssOriginal,
   TypescriptPlain,
 } from "devicons-react";
+import SkillsMarquee from "./SkillsMarquee";
+import StatTile from "./StatTile";
+import TechTile from "./TechTile";
+import styles from "./TechStack.module.scss";
 
-const stack = [
-  ["Ruby", <RubyPlain key={2} />],
-  ["JAVA", <JavaOriginal key={7} />],
-  ["JavaScript", <JavascriptOriginal key={4} />],
-  ["TypeScript", <TypescriptPlain key={5} />],
-  ["Ruby on Rails", <RailsPlain key={1} />],
-  ["Springboot", <SpringOriginal key={6} />],
-  ["ReactJS/TS", <ReactOriginal key={3} />],
-  ["SQL", <SqldeveloperOriginal key={8} />],
-  // ["PostgreSQL", <PostgresqlPlain key={9} />],
-  // ["SASS", <SassOriginal key={10} />],
-  // ["StyledComponents", <SiStyledcomponents key={19} />],
-  // ["TailwindCSS", <TailwindcssOriginal key={11} />],
-  ["CSS", <Css3Plain key={12} />],
-  ["AWS", <AmazonwebservicesOriginalWordmark key={13} />],
-  // ["Sentry", <SentryOriginal key={14} />],
-  // ["Rspec", <RspecOriginal key={15} />],
-  // ["Jira", <JiraPlain key={16} />],
-  // ["GIT", <GitPlain key={17} />],
-  // ["Github", <GithubOriginal key={18} />],
+const ICON_SIZE = "4rem";
+
+const stack: { name: string; icon: React.ReactNode }[] = [
+  { name: "JavaScript", icon: <JavascriptOriginal size={ICON_SIZE} /> },
+  { name: "TypeScript", icon: <TypescriptPlain size={ICON_SIZE} /> },
+  { name: "React", icon: <ReactOriginal size={ICON_SIZE} /> },
+  { name: "Next.js", icon: <NextjsOriginal size={ICON_SIZE} /> },
+  { name: "CSS", icon: <Css3Plain size={ICON_SIZE} /> },
+  { name: "Java", icon: <JavaOriginal size={ICON_SIZE} /> },
+  { name: "Ruby", icon: <RubyPlain size={ICON_SIZE} /> },
+  {
+    name: "AWS",
+    icon: <AmazonwebservicesPlainWordmark size={ICON_SIZE} color="#FFFFFF" />,
+  },
 ];
-import React from "react";
-import { motion } from "framer-motion";
-// import { SiStyledcomponents } from "react-icons/si";
+
+// 2021 is when professional software development experience started (Altvia Solutions).
+const CAREER_START_YEAR = 2021;
 
 export default function TechStackCard() {
-  const bulletedPillStyle =
-    "flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] items-center gap-1 bg-white dark:bg-black max-h-fit max-w-fit max-h-[3rem] py-1 px-2";
+  const yearsExperience = new Date().getFullYear() - CAREER_START_YEAR;
 
   return (
-    <motion.div className="flex items-center justify-center flex-row flex-wrap gap-2 mt-2 lg:mt-5 relative">
-      {stack.map((tech, index) => (
-        <motion.div
-          key={index}
-          whileHover={{ scale: 1.2 }}
-          className={bulletedPillStyle}
-        >
-          {tech[1]}
-          <p className="w-full text-xs lg:text-base font-bold leading-relaxed text-left">
-            {tech[0]}
-          </p>
-        </motion.div>
-      ))}
-    </motion.div>
+    <>
+      <div className={styles.grid}>
+        <div className={styles.row}>
+          {stack.map(({ name, icon }) => (
+            <TechTile key={name} name={name} icon={icon} />
+          ))}
+        </div>
+        <StatTile value={yearsExperience} label="Years of Professional Experience" />
+      </div>
+      <SkillsMarquee />
+    </>
   );
 }
