@@ -1,65 +1,88 @@
-import React from "react";
-import { currentJob } from "../../data";
+import { workExperience, education } from "../../data";
 import ResumeLink from "./ResumeLink";
-import PreviousExperienceExpandable from "./PreviousExperienceExpandable";
-import Image from "next/image";
+import styles from "./WorkExperience.module.scss";
 
 export default function WorkExperience() {
   return (
-    <div
-      id="experience"
-      className="relative grid grid-cols-1 py-5 gap-4 lg:py-20 w-full lg:w-[70%] mx-auto"
-    >
-      <h1 className="heading">
-        My <span className="text-purple">Experience</span>
-      </h1>
+    <section id="experience" className={styles.section}>
+      <h2 className={styles.heading}>
+        My <span className={styles.accent}>Experience</span>
+      </h2>
 
-      <div className="w-full mt-12 gap-2 lg:gap-10">
-        <div
-          key={currentJob[0].id}
-          className="flex-1 rounded-[1.75rem] bg-card text-card-foreground"
-        >
-          <div className="flex flex-col p-3 py-6 md:p-5 lg:p-10 gap-4 w-full">
-            <Image
-              src={currentJob[0].thumbnail}
-              alt={currentJob[0].thumbnail}
-              className="w-full lg:w-auto w-16"
-              width={660}
-              height={386}
-            />
-            <div className="lg:ms-5 text-left space-y-4">
-              <h1 className="text-start text-xl lg:text-4xl font-bold">
-                {currentJob[0].company}
-              </h1>
-              <h2 className="text-start text-base lg:text-xl font-bold">
-                {currentJob[0].title}
-              </h2>
-              <h3 className="text-left text-sm lg:text-base">
-                {`${currentJob[0].location} - ${currentJob[0].years[0]} to ${currentJob[0].years[1]}`}
-              </h3>
-              <div className="flex gap-2 flex-wrap mt-2">
-                {currentJob[0].stack.map((str, index): React.ReactNode => {
-                  return (
-                    <span
-                      className="text-yellow-200 font-semibold"
-                      key={index + 1}
-                    >
-                      {str}
-                    </span>
-                  );
-                })}
+      <div className={styles.timeline}>
+        {workExperience.map((job) => (
+          <article key={job.id} className={styles.card}>
+            <div className={styles.cardHeader}>
+              <span className={styles.company}>{job.company}</span>
+              <div className={styles.titleRow}>
+                <span className={styles.role}>{job.title}</span>
+                {job.partTime && (
+                  <span className={styles.badge}>Part-time</span>
+                )}
               </div>
-              <ul className="mt-1 list-disc pl-5 text-left text-xs lg:text-base">
-                {currentJob[0].desc.map((str, index): React.ReactNode => {
-                  return <li key={index + 1}>{str}</li>;
-                })}
-              </ul>
+              <span className={styles.meta}>
+                {job.location}&nbsp;&middot;&nbsp;{job.years[0]}–{job.years[1]}
+              </span>
             </div>
-          </div>
-        </div>
+
+            <div className={styles.divider} />
+
+            <div className={styles.tags}>
+              {job.stack.map((tech) => (
+                <span key={tech} className={styles.tag}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <ul className={styles.desc}>
+              {job.desc.map((item, i) => (
+                <li key={i} className={styles.descItem}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
-      <PreviousExperienceExpandable />
-      <div className="flex flex-col lg:flex-row justify-center items-center p-10 gap-3">
+
+      <p className={styles.subheading}>Education</p>
+
+      <div className={styles.timeline}>
+        {education.map((entry) => (
+          <article key={entry.id} className={styles.card}>
+            <div className={styles.cardHeader}>
+              <span className={styles.company}>{entry.company}</span>
+              <div className={styles.titleRow}>
+                <span className={styles.role}>{entry.title}</span>
+              </div>
+              <span className={styles.meta}>
+                {entry.location}&nbsp;&middot;&nbsp;{entry.years[0]}–{entry.years[1]}
+              </span>
+            </div>
+
+            <div className={styles.divider} />
+
+            <div className={styles.tags}>
+              {entry.stack.map((tech) => (
+                <span key={tech} className={styles.tag}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <ul className={styles.desc}>
+              {entry.desc.map((item, i) => (
+                <li key={i} className={styles.descItem}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <div className={styles.resumeLinks}>
         <ResumeLink
           title="Få min CV"
           url="https://drive.google.com/file/d/1x5EJ1wtRdTpoy0SVLGMYxqF7xtTN98eA/view?usp=sharing"
@@ -69,6 +92,6 @@ export default function WorkExperience() {
           url="https://drive.google.com/file/d/1iPixGsLv2gI243FcHbFkPHR6r6_6wzhq/view?usp=sharing"
         />
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,3 +1,5 @@
+@use "shapes" as *;
+
 .banner {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@
   margin: var(--space-12) auto 0;
   padding: var(--space-6);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
+  @include corner-cut-left(1.5rem);
 }
 
 .label {

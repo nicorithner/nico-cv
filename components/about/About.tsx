@@ -1,111 +1,146 @@
-"use client";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { Us, Es, No } from "react-flags-select";
-import { motion } from "framer-motion";
+import styles from "./About.module.scss";
 
 export default function About() {
-  const cardsStandardStyle =
-    "row-span-1 relative overflow-hidden rounded-3xl justify-between flex flex-col space-y-4 ";
-  const features = [
-    {
-      title: "About",
-      description: [
-        "Creative and resourceful problem solver with enthusiasm for learning and acquiring new skills.",
-        "Patient and persistent in the face of challenging problems.",
-        "Team player, cooperative and kind. Firm believer that it takes a team to achieve great things.",
-      ],
-      className: `${cardsStandardStyle} col-span-1 lg:col-span-3 row-span-2 border-2 p-4 h-fit`,
-    },
-    {
-      title: "Place High Value on Communication",
-      description: [ "Multilingual. Currently studying Norwegian bokmål at intermediate level." , "I am flexible with time zone communications" ],
-      skeleton: <SkeletonTwo />,
-      className: `${cardsStandardStyle} col-span-1 lg:col-span-3 row-span-2 h-[20rem] border-2 p-4 h-fit`,
-    },
-  ];
-
   return (
-    <div className="relative z-20 lg:py-15 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-2 lg:mt-12 rounded-md">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} className={feature.className}>
-              <FeatureTitle>{feature.title}</FeatureTitle>
-              {feature.description.map((line, index) => (
-                <FeatureDescription key={index}>{line}</FeatureDescription>
-              ))}
-              <div className=" h-full w-full">{feature.skeleton}</div>
-            </FeatureCard>
-          ))}
+    <section id="about" className={styles.section}>
+      <h2 className={styles.heading}>
+        <span className={styles.accent}>About</span>
+      </h2>
+
+      <div className={styles.grid}>
+
+        {/* Bio — 4 cols */}
+        <div className={`${styles.tile} ${styles.tileBio}`}>
+          <p className={styles.bioPara}>
+            Born in the mountains of Patagonia, Argentina. Now at home in the
+            Colorado Rockies.
+          </p>
+          <p className={styles.bioPara}>
+            Fullstack developer with a love for front-end craft — building
+            things that feel good to use, not just things that work.
+          </p>
+          <p className={styles.bioPara}>
+            Volunteer. Swimmer. Hiker. Perpetually curious about the world.
+          </p>
         </div>
-    </div>
+
+        {/* USAW Coaching — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileUsaw}`}>
+          <Image
+            src="/usaw-logo-shield.png"
+            alt="USA Weightlifting"
+            width={72}
+            height={56}
+            className={styles.usawLogo}
+          />
+          <span className={styles.tileLabel}>USAW Certified Coach</span>
+          <span className={styles.stat}>19</span>
+          <p className={styles.tileText}>
+            Years coaching recreational and competitive lifters — including
+            athletes on the Norwegian national weightlifting team.
+          </p>
+        </div>
+
+        {/* Norway — 3 cols */}
+        <div className={`${styles.tile} ${styles.tileNorway} ${styles.photoTile}`}>
+          <Image
+            src="/nordsetter-2026.webp"
+            alt="Nordsetter, Norway"
+            fill
+            className={styles.photo}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className={styles.photoOverlay}>
+            <No className={styles.flag} />
+            <span className={styles.tileLabelLight}>Norway</span>
+            <p className={styles.tileTextLight}>
+              Home away from home — the country, the people, the language, and its sports.
+            </p>
+          </div>
+        </div>
+
+        {/* Languages — 3 cols */}
+        <div className={`${styles.tile} ${styles.tileLanguages}`}>
+          <span className={styles.tileLabel}>Languages</span>
+          <div className={styles.langList}>
+            <div className={styles.langRow}>
+              <Us className={styles.flag} />
+              <div>
+                <p className={styles.langName}>English</p>
+                <p className={styles.langLevel}>Fluent</p>
+              </div>
+            </div>
+            <div className={styles.langRow}>
+              <Es className={styles.flag} />
+              <div>
+                <p className={styles.langName}>Español</p>
+                <p className={styles.langLevel}>Native</p>
+              </div>
+            </div>
+            <div className={styles.langRow}>
+              <No className={styles.flag} />
+              <div>
+                <p className={styles.langName}>Norsk Bokmål</p>
+                <p className={styles.langLevel}>Intermediate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Nico in the Colorado mountains — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileExtra} ${styles.photoTile}`}>
+          <Image
+            src="/nico-ski-shop.webp"
+            alt="Nico at the ski shop"
+            fill
+            className={styles.photoTop}
+            sizes="(max-width: 1024px) 100vw, 33vw"
+          />
+        </div>
+
+        {/* Nordic Skiing — 2 cols, action photo */}
+        <div className={`${styles.tile} ${styles.tileSkiPhoto} ${styles.photoTile}`}>
+          <Image
+            src="/langrenn-klassisk-granåsen.png"
+            alt="Classic cross-country skiing"
+            fill
+            className={styles.photo}
+            sizes="(max-width: 1024px) 100vw, 33vw"
+          />
+          <div className={styles.photoOverlay}>
+            <span className={styles.tileLabelLight}>Nordic Skiing</span>
+            <p className={styles.tileTextLight}>
+              Classic technique · Granåsen, Norway
+            </p>
+          </div>
+        </div>
+
+        {/* Winter Park, CO — 2 cols, hiking photo */}
+        <div className={`${styles.tile} ${styles.tileNordic} ${styles.photoTile}`}>
+          <Image
+            src="/co-hike.webp"
+            alt="Colorado mountain hike"
+            fill
+            className={styles.photo}
+            sizes="(max-width: 1024px) 100vw, 33vw"
+          />
+          <div className={styles.photoOverlay}>
+            <span className={styles.tileLabelLight}>Winter Park, CO</span>
+            <p className={styles.tileTextLight}>Continental Divide 12,000 ft · Mountain Time</p>
+          </div>
+        </div>
+
+        {/* Availability — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileLocation}`}>
+          <span className={styles.tileLabel}>Open to Opportunities</span>
+          <p className={styles.tileText}>
+            Seeking fullstack roles in the <strong>USA</strong> or <strong>Norway</strong> — hybrid, remote, or onsite.
+          </p>
+        </div>
+
+      </div>
+    </section>
   );
 }
-
-const FeatureCard = ({
-  children,
-  className,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      className={cn(
-        `relative overflow-hidden m-4 min-h-fit bg-slate-900`,
-        className
-      )}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <p className=" max-w-5xl mx-auto text-left tracking-tight text-black dark:text-white text-xl md:text-2xl md:leading-snug ml-0">
-      {children}
-    </p>
-  );
-};
-
-const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <p
-      className={cn(
-        "text-sm md:text-base lg:text-lg  max-w-4xl text-left mx-auto",
-        "text-neutral-500 text-center font-normal dark:text-neutral-300",
-        "text-left mx-0 my-2"
-      )}
-    >
-      {children}
-    </p>
-  );
-};
-
-export const SkeletonTwo = () => {
-  const flagContainerStyle = "flex gap-4 items-center my-2";
-  const flagStyle =
-    "w-12 h-12 sm:min-w-8 sm:min-h-8  sm:min-w-[30%] lg:min-w-fit";
-  const flagTextStyle =
-    "text-xl sm:text-sm lg:text-xl text-white-200 font-bold text-right lg:text-left sm:min-w-[70%]";
-  return (
-    <div>
-      <div className="p-3">
-        <div className={flagContainerStyle}>
-          <Us className={flagStyle} />
-          <span className={flagTextStyle}>English - Fluent</span>
-        </div>
-        <div className={flagContainerStyle}>
-          <Es className={flagStyle} />
-          <span className={flagTextStyle}>Español - Fluent/Native</span>
-        </div>
-        <div className={flagContainerStyle}>
-          <No className={flagStyle} />
-          <span className={flagTextStyle}>Norsk Bokmål - Intermediate</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-

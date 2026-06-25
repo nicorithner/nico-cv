@@ -1,0 +1,26 @@
+@use "shapes" as *;
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-tile);
+  color: var(--color-tile-foreground);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--duration-base) var(--ease-standard);
+  @include corner-cut(0.6rem);
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+}
