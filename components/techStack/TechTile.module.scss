@@ -14,8 +14,8 @@
   width: 9rem;
   height: 10.5rem;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background-color: var(--color-secondary);
-  color: var(--color-secondary-foreground);
+  background-color: var(--color-tile);
+  color: var(--color-tile-foreground);
   transition: transform var(--duration-base) var(--ease-standard);
 
   @include respond-to(md) {

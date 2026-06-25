@@ -1,4 +1,5 @@
 @use "breakpoints" as *;
+@use "shapes" as *;
 
 .statTile {
   display: flex;
@@ -6,11 +7,11 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  border-radius: var(--radius-card);
-  background-color: var(--color-primary);
-  color: var(--color-primary-foreground);
+  background-color: var(--color-tile);
+  color: var(--color-tile-foreground);
   padding: var(--space-8);
   text-align: center;
+  @include corner-cut(1.5rem);
 
   @include respond-to(lg) {
     width: 18rem;

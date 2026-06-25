@@ -7,7 +7,7 @@
   flex-shrink: 0;
   width: 4rem;
   height: 4rem;
-  background-color: var(--color-secondary);
-  color: var(--color-secondary-foreground);
+  background-color: var(--color-tile);
+  color: var(--color-tile-foreground);
   @include corner-cut(0.5rem);
 }
