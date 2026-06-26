@@ -6,7 +6,7 @@ import Navigation from "../components/navigation/Navigation";
 
 export const metadata: Metadata = {
   title: "Nico Rithner software development",
-  description: "Nico Rithner, professional Fullsatck software developer.",
+  description: "Nico Rithner, professional Fullstack software developer.",
 };
 
 export default function RootLayout({

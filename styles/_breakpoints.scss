@@ -1,6 +1,5 @@
-// Mirrors the breakpoints in tailwind.config.ts so converted components
-// keep the same responsive behavior. Sass variables, not CSS custom
-// properties, because @media conditions can't read custom properties.
+// Sass variables, not CSS custom properties, because @media conditions
+// can't read custom properties.
 $breakpoint-sm: 300px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;

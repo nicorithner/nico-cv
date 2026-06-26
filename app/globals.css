@@ -62,15 +62,6 @@ video {
   --color-popover-foreground: hsl(222 25% 11%);
   --color-card: hsl(0 0% 100%);
   --color-card-foreground: hsl(222 25% 11%);
-  --color-black: #000;
-  --color-black-100: #000319;
-  --color-black-200: rgba(17, 25, 40, 0.75);
-  --color-black-300: rgba(255, 255, 255, 0.125);
-  --color-white: #fff;
-  --color-white-100: #bec1dd;
-  --color-white-200: #c1c2d3;
-  --color-blue-100: #e4ecff;
-  --color-purple: #cbacf9;
   --color-brand: #0071e3;
 
   /* Tile — always dark regardless of theme so icons/logos stay visible */

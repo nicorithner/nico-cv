@@ -5,20 +5,13 @@ const MagicButton = ({
   title,
   icon,
   position,
-  handleClick,
-  otherClasses,
 }: {
   title: string;
   icon: React.ReactNode;
   position: string;
-  handleClick?: () => void;
-  otherClasses?: string;
 }) => {
   return (
-    <button
-      className={`${styles.button} ${otherClasses ?? ""}`}
-      onClick={handleClick}
-    >
+    <button className={styles.button}>
       {position === "left" && icon}
       {title}
       {position === "right" && icon}
