@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   AmazonwebservicesPlainWordmark,
   Css3Plain,
@@ -19,7 +20,7 @@ import styles from "./SkillsMarquee.module.scss";
 
 const ICON_SIZE = "2rem";
 
-const skills: { name: string; icon: React.ReactNode }[] = [
+const skills: { name: string; icon: ReactNode }[] = [
   { name: "HTML", icon: <Html5Plain size={ICON_SIZE} /> },
   { name: "SASS", icon: <SassOriginal size={ICON_SIZE} /> },
   { name: "Spring Boot", icon: <SpringOriginal size={ICON_SIZE} /> },

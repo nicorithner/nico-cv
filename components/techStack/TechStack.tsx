@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   AmazonwebservicesPlainWordmark,
   Css3Plain,
@@ -15,7 +16,7 @@ import styles from "./TechStack.module.scss";
 
 const ICON_SIZE = "4rem";
 
-const stack: { name: string; icon: React.ReactNode }[] = [
+const stack: { name: string; icon: ReactNode }[] = [
   { name: "JavaScript", icon: <JavascriptOriginal size={ICON_SIZE} /> },
   { name: "TypeScript", icon: <TypescriptPlain size={ICON_SIZE} /> },
   { name: "React", icon: <ReactOriginal size={ICON_SIZE} /> },
