@@ -16,7 +16,7 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-testid="footer">
       <div className={styles.inner}>
         <a href="#" className={styles.logo} aria-label="Back to top">
           N<span className={styles.logoAccent}>R</span>

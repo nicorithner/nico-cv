@@ -7,7 +7,7 @@ import styles from "./Hero.module.scss";
 
 const Hero = () => {
   return (
-    <div className={styles.hero}>
+    <div className={styles.hero} data-testid="hero">
       <HexGrid />
       <div className={styles.inner}>
         <Image
