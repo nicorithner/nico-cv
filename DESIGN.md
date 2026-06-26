@@ -23,7 +23,10 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 
 - **Typography**: large, confident headings, tight tracking, generous line-height on body text. Inter or Geist as the SF Pro stand-in. Some bold graphic accents are wanted (confirmed direction, reference: dark portfolio screenshot, 2026-06-21): an italicized accent-colored word in the hero name, a bordered pill/badge around the role title, chunky CTA buttons — more graphic than a plain Apple headline, layered on top of the calm baseline rather than replacing it.
 - **Color**: near-monochrome (white/black + neutral grays), one accent color used sparingly. Drop the purple/yellow/blue mix currently in use.
-- **Shape language** (decided 2026-06-24): the Tech Stack hexagon tiles aren't a one-off — they're the seed of a unifying angular motif. Echo it as a single 45° chamfered corner (top-right, via the `corner-cut($size)` mixin in `styles/_shapes.scss`) on hard-edged interactive chrome: CTA buttons (done, `MagicButton`), and later small UI accents (bullets, dividers, hover indicators) once their sections are ported. Applied sparingly and only to one corner so it reads as a deliberate accent, not a sci-fi UI kit. This is interactive-chrome-only — section/card container edges stay soft per the no-hard-edges rule below, not chamfered.
+- **Shape language** (decided 2026-06-24, extended 2026-06-25): the Tech Stack hexagon tiles are the seed of a unifying angular motif — a single 45° chamfered corner, direction carrying semantic meaning:
+  - **Top-right** (`corner-cut($size)` mixin) = interactive chrome: CTA buttons (`MagicButton`), marquee tiles, resume links, list bullets. Done.
+  - **Top-left** (`corner-cut-left($size)` mixin) = content cards: About bento tiles, experience/education cards, marquee banner, stat tile. Done.
+  - Both mixins live in `styles/_shapes.scss`. Applied to one corner only so it reads as a deliberate accent, not a sci-fi UI kit. Cards also carry a subtle `1px solid rgba(255,255,255,0.1)` border for definition without hard edges.
 - **Spacing**: full-height-ish sections, more breathing room between blocks than the current bento-grid density.
 - **Section boundaries**: confirmed direction (reference: dark portfolio screenshots, 2026-06-21) — keep distinct sections/cards (About, Tech Stack, Work Experience stay separate blocks), but drop hard borders/outlines between them. Transitions should read as soft/shared background (subtle gradient or background-shade shift) rather than boxed edges, so the page feels continuous even though content is still organized into cards. This applies to section/card-level edges only — small UI chrome (pills, badges, buttons) keeping a thin border is fine and part of the typographic-accent direction above.
 - **Motion**: scroll-triggered fade/slide-up on section entry (Framer Motion `whileInView`), no looping/ambient animation by default.
@@ -45,6 +48,13 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 
 ## Section-by-section ideas
 
+### Navigation
+- Minimal fixed top bar: name/initials on the left (anchors back to top), section links on the right: About · Skills · Experience.
+- Semi-transparent background + `backdrop-filter: blur()` so content scrolls behind it — very Apple, low visual weight.
+- Highlight the active section as you scroll (Intersection Observer).
+- Mobile: same bar, links collapse or shrink — 3 links is short enough to fit without a hamburger menu.
+- Clean up section IDs site-wide when building this — currently only `id="experience"` exists and nothing links to it.
+
 ### Hero
 - Drop the dotted grid background.
 - Name as large static type (no typewriter), with one word in the accent color, italicized (graphic-accent direction). Role/title sits in a bordered pill badge underneath, one calm subtitle treatment overall.
@@ -52,19 +62,29 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 - CTA button below gets a single top-right chamfered corner instead of full rounding (ties into the hex-derived shape-language motif, see Baseline style above) — **done**, drops the old bordered-glow `MagicButton` look.
 - Candidate signature moment: cursor-reactive subtle gradient/glow behind the headshot, instead of the grid pattern.
 
-### About
-- Currently a bento-style grid of cards (about text, languages). Keep the grid layout — it's a reasonable Apple-adjacent pattern (cf. Apple's feature grids) — but remove `border-2` entirely rather than just softening it; let cards read as distinct via a subtle background-shade shift, not an outline. Drop heavy hover `scale(1.05)` in favor of subtle elevation on hover.
+### About — **Done**
+Full bento grid (6-col desktop, 2-col mobile) using `grid-template-areas`. 8 tiles:
+- **Bio** (4 cols): Patagonia origin → Colorado life → front-end craft → personal interests.
+- **Open to Opportunities** (2 cols, row 1): USA or Norway — hybrid, remote, or onsite.
+- **Norway photo** (2 cols, spans 2 rows): `nordsetter-2026.webp` with flag + overlay caption.
+- **Languages** (2 cols): English / Español / Norsk Bokmål with flags.
+- **Nico ski shop portrait** (2 cols, spans 2 rows): `nico-ski-shop.webp`, thumbs-up in ski shop.
+- **USAW Certified Coach** (2 cols): logo + 19-year stat + Norwegian national team mention.
+- **Nordic Skiing** (2 cols): `langrenn-klassisk-granåsen.png` action photo + overlay.
+- **Winter Park, CO** (4 cols): `co-hike.webp` panoramic hike photo + overlay.
+All tiles use `corner-cut-left(1.5rem)`. Subtle `rgba(255,255,255,0.1)` border. No hover scale. `"use client"` removed (pure server component).
 
 ### Tech Stack
 - Switch from flowing pill badges to an icon-tile grid (reference pattern: square tiles, one icon each) — but built with soft background-shade tiles, no hard borders, consistent with the no-hard-edges rule. Drop hover `scale(1.2)` bounce in favor of a subtle opacity/elevation change.
 - Include one wider stat tile alongside the icon tiles (reference pattern: "4 Years Experience" callout) — gives the grid an asymmetric focal point instead of being purely uniform icons.
 
-### Work Experience
-- Replace `AnimatedBorderCard` with a borderless card — no outline at all, just a background-shade shift from the page background (consistent with the no-hard-edges direction) — and clean divider lines between roles instead of a glowing border. Apply the shape-language corner-cut accent (see Baseline style) to small chrome here — list bullets, divider end-caps, hover indicators — not the card edges themselves.
-- Remove the leftover `01 02 03 04` decorative tab strip artifact in the top-left corner of the current job card (dead chrome from the border-animation component, not intentional UI).
-- Company imagery (Booz Allen marketing banner, FyrKode logo tile, ProductPlan dashboard screenshot) is visually inconsistent — different crops/styles/colors. Needs a consistent treatment (e.g. uniform aspect ratio + crop, or a consistent logo-on-neutral-bg treatment) rather than raw screenshots.
-- Consider an asymmetric showcase layout for this (reference pattern: one large image + a row of smaller cropped images with captions) instead of uniform stacked cards, once the imagery-consistency issue above is fixed — raw inconsistent screenshots would undermine this layout more than the current stacked one.
-- This is a good candidate for the scroll-linked reveal (cards/timeline entries fade/slide in as you scroll).
+### Work Experience — **Done**
+Unified vertical timeline — all jobs in one consistent card format, newest first. `PreviousExperienceExpandable` (Framer Motion expand-to-modal) removed entirely. All data consolidated into `workExperience` array in `data/index.ts` (replaced the old `currentJob` split). Education section added below with same card style and a brand-colored "EDUCATION" subheading.
+- Cards use `corner-cut-left(1.5rem)`, `--color-brand` tech tags, corner-cut bullet points.
+- Jobs: FyrKode (part-time badge), Booz Allen (updated to June 2026), Altvia. ProductPlan removed.
+- ResumeLink ported to CSS Modules with `corner-cut` (top-right, interactive).
+- Company imagery not used — removed raw screenshots pending a consistent treatment.
+- Scroll-linked reveal still to do (step 5).
 
 ## Cleanup Plan (do in this order)
 
@@ -91,10 +111,11 @@ Reasoning: lock the decisions everything else inherits from before touching comp
    - [x] Stripped the conic-gradient glow out of `MagicButton`; now a plain `bg-primary`/`text-primary-foreground` button, same props/API.
 
 4. **Section-by-section refactor — port to SCSS (CSS Modules) + apply new design together**, ordered by current gap size (smallest first, so momentum builds and the accent/font choices get validated early):
-   - [ ] Tech Stack — `TechStack.module.scss`, switch to borderless icon-tile grid + stat tile, remove hover `scale(1.2)` bounce.
-   - [ ] About — `About.module.scss`, flatten card chrome (`border-2`, hover `scale(1.05)`) now that it's a clean two-card layout post-globe-removal.
+   - [x] Tech Stack — hex icon tiles, scrolling marquee, stat tile, CSS Modules. Corner-cut-left on stat tile and marquee banner.
+   - [x] About — full bento grid, 8 tiles, 4 photos, corner-cut-left on all tiles. See About section above.
+   - [x] Work Experience — unified vertical timeline, CSS Modules, education section, corner-cut-left on cards. See Work Experience section above.
+   - [ ] Navigation — fixed top bar, blur background, Intersection Observer active-link highlight, clean up section IDs site-wide (see Navigation notes above).
    - [ ] Hero — `Hero.module.scss`, apply new type/color, italic accent word + bordered role pill, chunky pill CTA, floating stat callout card, add cursor-reactive signature moment if chosen.
-   - [ ] Work Experience — `WorkExperience.module.scss`, biggest lift: rebuild card without `AnimatedBorderCard`, fix company imagery consistency, fold tech tags into accent system, consider asymmetric showcase layout, review `PreviousExperienceExpandable` styling (currently unreviewed).
 
 5. **Layer in signature moments** (scroll-linked reveals, theme toggle transition, etc.) once the calm baseline reads consistently across all sections in both themes. Pick 2-3 from:
    - [ ] Cursor-reactive gradient/glow in the hero (replaces the dotted grid).

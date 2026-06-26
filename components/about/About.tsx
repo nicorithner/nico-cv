@@ -4,7 +4,7 @@ import styles from "./About.module.scss";
 
 export default function About() {
   return (
-    <section id="about" className={styles.section}>
+    <section id="about" className={styles.section} data-testid="about-section">
       <h2 className={styles.heading}>
         <span className={styles.accent}>About</span>
       </h2>
@@ -12,7 +12,7 @@ export default function About() {
       <div className={styles.grid}>
 
         {/* Bio — 4 cols */}
-        <div className={`${styles.tile} ${styles.tileBio}`}>
+        <div className={`${styles.tile} ${styles.tileBio}`} data-testid="about-bio">
           <p className={styles.bioPara}>
             Born in the mountains of Patagonia, Argentina. Now at home in the
             Colorado Rockies.
@@ -27,7 +27,7 @@ export default function About() {
         </div>
 
         {/* USAW Coaching — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileUsaw}`}>
+        <div className={`${styles.tile} ${styles.tileUsaw}`} data-testid="about-usaw">
           <Image
             src="/usaw-logo-shield.png"
             alt="USA Weightlifting"
@@ -44,7 +44,7 @@ export default function About() {
         </div>
 
         {/* Norway — 3 cols */}
-        <div className={`${styles.tile} ${styles.tileNorway} ${styles.photoTile}`}>
+        <div className={`${styles.tile} ${styles.tileNorway} ${styles.photoTile}`} data-testid="about-norway">
           <Image
             src="/nordsetter-2026.webp"
             alt="Nordsetter, Norway"
@@ -62,7 +62,7 @@ export default function About() {
         </div>
 
         {/* Languages — 3 cols */}
-        <div className={`${styles.tile} ${styles.tileLanguages}`}>
+        <div className={`${styles.tile} ${styles.tileLanguages}`} data-testid="about-languages">
           <span className={styles.tileLabel}>Languages</span>
           <div className={styles.langList}>
             <div className={styles.langRow}>
@@ -90,7 +90,7 @@ export default function About() {
         </div>
 
         {/* Nico in the Colorado mountains — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileExtra} ${styles.photoTile}`}>
+        <div className={`${styles.tile} ${styles.tileExtra} ${styles.photoTile}`} data-testid="about-portrait">
           <Image
             src="/nico-ski-shop.webp"
             alt="Nico at the ski shop"
@@ -101,7 +101,7 @@ export default function About() {
         </div>
 
         {/* Nordic Skiing — 2 cols, action photo */}
-        <div className={`${styles.tile} ${styles.tileSkiPhoto} ${styles.photoTile}`}>
+        <div className={`${styles.tile} ${styles.tileSkiPhoto} ${styles.photoTile}`} data-testid="about-nordic">
           <Image
             src="/langrenn-klassisk-granåsen.png"
             alt="Classic cross-country skiing"
@@ -118,7 +118,7 @@ export default function About() {
         </div>
 
         {/* Winter Park, CO — 2 cols, hiking photo */}
-        <div className={`${styles.tile} ${styles.tileNordic} ${styles.photoTile}`}>
+        <div className={`${styles.tile} ${styles.tileNordic} ${styles.photoTile}`} data-testid="about-colorado">
           <Image
             src="/co-hike.webp"
             alt="Colorado mountain hike"
@@ -133,7 +133,7 @@ export default function About() {
         </div>
 
         {/* Availability — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileLocation}`}>
+        <div className={`${styles.tile} ${styles.tileLocation}`} data-testid="about-availability">
           <span className={styles.tileLabel}>Open to Opportunities</span>
           <p className={styles.tileText}>
             Seeking fullstack roles in the <strong>USA</strong> or <strong>Norway</strong> — hybrid, remote, or onsite.
