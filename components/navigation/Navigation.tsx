@@ -42,7 +42,7 @@ export default function Navigation() {
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Site navigation">
         <a href="#" className={styles.logo} aria-label="Back to top">
-          NR
+          N<span className={styles.logoAccent}>R</span>
         </a>
         <ul className={styles.links} role="list">
           {NAV_LINKS.map(({ label, href }) => (

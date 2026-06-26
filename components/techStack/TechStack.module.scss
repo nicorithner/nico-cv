@@ -17,12 +17,15 @@
 
 .row {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
 
   @include respond-to(md) {
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-8);
+  }
+
+  @include respond-to(lg) {
+    flex: 1;
   }
 }

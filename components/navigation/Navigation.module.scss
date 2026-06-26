@@ -28,15 +28,25 @@
 }
 
 .logo {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-wide);
   text-decoration: none;
   color: var(--color-foreground);
+  cursor: pointer;
   transition: color var(--duration-fast) var(--ease-standard);
 
   &:hover {
     color: var(--color-brand);
+  }
+}
+
+.logoAccent {
+  color: var(--color-brand);
+  transition: color var(--duration-fast) var(--ease-standard);
+
+  .logo:hover & {
+    color: var(--color-foreground);
   }
 }
 
@@ -55,6 +65,7 @@
   letter-spacing: var(--tracking-wide);
   text-decoration: none;
   color: var(--color-muted-foreground);
+  cursor: pointer;
   transition: color var(--duration-fast) var(--ease-standard);
 
   &:hover {
