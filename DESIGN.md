@@ -65,18 +65,36 @@ Two coherent palettes built around the brand blue. The light-mode background car
 ## Section-by-section ideas
 
 ### Navigation
-- Minimal fixed top bar: name/initials on the left (anchors back to top), section links on the right: About · Skills · Experience.
+- Minimal fixed top bar: name/initials on the left (anchors back to top), section links on the right: About · Skills · Experience · Resume.
 - Semi-transparent background + `backdrop-filter: blur()` so content scrolls behind it — very Apple, low visual weight.
 - Highlight the active section as you scroll (Intersection Observer).
-- Mobile: same bar, links collapse or shrink — 3 links is short enough to fit without a hamburger menu.
+- Mobile: same bar, links collapse or shrink — 4 links is short enough to fit without a hamburger menu.
 - Clean up section IDs site-wide when building this — currently only `id="experience"` exists and nothing links to it.
 
 ### Hero
-- Drop the dotted grid background.
+- Drop the dotted grid background. **Done** — replaced with `HexGrid` (see below).
 - Name as large static type (no typewriter), with one word in the accent color, italicized (graphic-accent direction). Role/title sits in a bordered pill badge underneath, one calm subtitle treatment overall.
 - Floating callout card overlapping/flanking the headshot (reference pattern) — but only one, stat-style, since there's no testimonial content to fill a second card. Content TBD when we build this section (candidates: years of experience, current role/employer, or language count — decide then).
 - CTA button below gets a single top-right chamfered corner instead of full rounding (ties into the hex-derived shape-language motif, see Baseline style above) — **done**, drops the old bordered-glow `MagicButton` look.
+- Full-viewport height at desktop — `min-height: calc(100svh - var(--nav-height))` with flex centering. **Done.**
 - Candidate signature moment: cursor-reactive subtle gradient/glow behind the headshot, instead of the grid pattern.
+
+#### HexGrid component — **Done**
+Decorative SVG honeycomb pattern (`components/hero/HexGrid.tsx` + `HexGrid.module.scss`):
+- **Geometry**: pointy-top hexes, row-based layout. `COL_W = R√3` (86.6 px) within-row spacing, `ROW_H = R × 1.5` (75 px) row-to-row, odd rows shift right by `COL_W / 2` (43.3 px). Guarantees edge-sharing (not vertex-touching).
+- **Connected cluster**: `GRID_CELLS` — dense at top-right (rows 0–8), then sparse left-drifting trail into the About section (rows 9–13, y ≈ 725–1025 in SVG space). Stroke: `--color-hex-decoration` at 14% opacity.
+- **Floating hexes**: 7 off-grid brand-colored (`--color-brand`) polygons at varying radii, scattered around the cluster. 30% opacity.
+- **SVG layout**: `viewBox="0 0 1280 1200"`, `preserveAspectRatio="xMidYMin meet"`, `width: 100%; height: auto` — scales to container width and extends proportionally below the hero into the About section.
+- **Left-edge fade**: `mask-image: linear-gradient(to right, transparent 0%, black 22%, black 100%)` keeps the text area clean.
+- **z-index**: SVG at z-index 0, `.inner` content at z-index 1. About's `.section` has `position: relative; z-index: 1` so its content paints above the overflowing SVG.
+- **Theme token**: `--color-hex-decoration` — `hsl(222 18% 62%)` light / `hsl(220 40% 55%)` dark, defined in `globals.css`.
+- Hidden below `lg` breakpoint (`display: none` → `display: block`).
+
+### Footer — **Done**
+Minimal footer below `<main>`: NR logo (left, scrolls to top, same hover-swap style as nav logo), GitHub + LinkedIn icon links (right, `react-icons/fi`, theme-responsive color), copyright line (centered below, auto-updates year).
+- `Footer.tsx` + `Footer.module.scss` in `components/footer/`.
+- Width and padding match the page container (`80rem` max-width).
+- Top border uses `--color-border` to visually close the page.
 
 ### About — **Done**
 Full bento grid (6-col desktop, 2-col mobile) using `grid-template-areas`. 8 tiles:
@@ -101,6 +119,8 @@ Unified vertical timeline — all jobs in one consistent card format, newest fir
 - ResumeLink ported to CSS Modules with `corner-cut` (top-right, interactive).
 - Company imagery not used — removed raw screenshots pending a consistent treatment.
 - Scroll-linked reveal still to do (step 5).
+
+**Resume CTA** — redesigned from two floating buttons into a proper named section (`id="resume"`): brand-colored "Download" label, large "Get My CV" heading with accent color, bilingual subtext, then the two `ResumeLink` buttons. Separated from the education timeline with a `--color-border` top rule. The "Resume" nav link in Navigation scrolls here and activates via Intersection Observer.
 
 ## Cleanup Plan (do in this order)
 
@@ -130,8 +150,9 @@ Reasoning: lock the decisions everything else inherits from before touching comp
    - [x] Tech Stack — hex icon tiles, scrolling marquee, stat tile, CSS Modules. Corner-cut-left on stat tile and marquee banner.
    - [x] About — full bento grid, 8 tiles, 4 photos, corner-cut-left on all tiles. See About section above.
    - [x] Work Experience — unified vertical timeline, CSS Modules, education section, corner-cut-left on cards. See Work Experience section above.
-   - [x] Navigation — fixed top bar, blur background, Intersection Observer active-link highlight, clean up section IDs site-wide (see Navigation notes above).
-   - [ ] Hero — `Hero.module.scss`, apply new type/color, italic accent word + bordered role pill, chunky pill CTA, floating stat callout card, add cursor-reactive signature moment if chosen.
+   - [x] Navigation — fixed top bar, blur background, Intersection Observer active-link highlight, clean up section IDs site-wide. 4 links: About · Skills · Experience · Resume.
+   - [~] Hero — `Hero.module.scss` done, full-viewport height done, `HexGrid` decorative SVG honeycomb done (see Hero notes above). Still pending: italic accent word, bordered role pill, floating stat callout card.
+   - [x] Footer — `Footer.tsx` + `Footer.module.scss`, NR logo, GitHub + LinkedIn icons, copyright line (see Footer notes above).
 
 5. **Layer in signature moments** (scroll-linked reveals, theme toggle transition, etc.) once the calm baseline reads consistently across all sections in both themes. Pick 2-3 from:
    - [ ] Cursor-reactive gradient/glow in the hero (replaces the dotted grid).

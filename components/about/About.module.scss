@@ -66,7 +66,14 @@
 
 .tileUsaw {
   grid-column: span 2;
-  @include respond-to(lg) { grid-area: remote; }
+  align-items: center;
+  text-align: center;
+
+  @include respond-to(lg) {
+    grid-area: remote;
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 .tileNorway {
@@ -219,12 +226,16 @@
 }
 
 .usawLogo {
-  position: absolute;
-  top: var(--space-6);
-  right: var(--space-6);
+  position: static;
   width: 7rem;
   height: auto;
   border-radius: var(--radius-md);
+
+  @include respond-to(lg) {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+  }
 }
 
 // ── Languages ──────────────────────────────────────────────────────────────

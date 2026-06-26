@@ -36,7 +36,7 @@ export default function TechStackCard() {
   const yearsExperience = new Date().getFullYear() - CAREER_START_YEAR;
 
   return (
-    <section id="skills">
+    <section id="skills" data-testid="skills-section">
       <div className={styles.grid}>
         <div className={styles.row}>
           {stack.map(({ name, icon }) => (

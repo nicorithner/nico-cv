@@ -4,7 +4,7 @@ import styles from "./WorkExperience.module.scss";
 
 export default function WorkExperience() {
   return (
-    <section id="experience" className={styles.section}>
+    <section id="experience" className={styles.section} data-testid="experience-section">
       <h2 className={styles.heading}>
         My <span className={styles.accent}>Experience</span>
       </h2>
@@ -82,7 +82,7 @@ export default function WorkExperience() {
         ))}
       </div>
 
-      <div id="resume" className={styles.resumeSection}>
+      <div id="resume" className={styles.resumeSection} data-testid="resume-cta">
         <p className={styles.resumeLabel}>Download</p>
         <h3 className={styles.resumeHeading}>
           Get My <span className={styles.accent}>CV</span>
