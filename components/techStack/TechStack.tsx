@@ -36,7 +36,7 @@ export default function TechStackCard() {
   const yearsExperience = new Date().getFullYear() - CAREER_START_YEAR;
 
   return (
-    <>
+    <section id="skills">
       <div className={styles.grid}>
         <div className={styles.row}>
           {stack.map(({ name, icon }) => (
@@ -46,6 +46,6 @@ export default function TechStackCard() {
         <StatTile value={yearsExperience} label="Years of Professional Experience" />
       </div>
       <SkillsMarquee />
-    </>
+    </section>
   );
 }

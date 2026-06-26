@@ -1,0 +1,22 @@
+@use "breakpoints" as *;
+
+.main {
+  position: relative;
+  background-color: var(--color-black-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+
+  @include respond-to(sm) {
+    padding: 0 var(--space-10);
+  }
+}
+
+.container {
+  max-width: 80rem;
+  width: 100%;
+}
