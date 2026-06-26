@@ -23,6 +23,22 @@ Apple-style calm as the baseline (~90% of the site), with a small number of deli
 
 - **Typography**: large, confident headings, tight tracking, generous line-height on body text. Inter or Geist as the SF Pro stand-in. Some bold graphic accents are wanted (confirmed direction, reference: dark portfolio screenshot, 2026-06-21): an italicized accent-colored word in the hero name, a bordered pill/badge around the role title, chunky CTA buttons — more graphic than a plain Apple headline, layered on top of the calm baseline rather than replacing it.
 - **Color**: near-monochrome (white/black + neutral grays), one accent color used sparingly. Drop the purple/yellow/blue mix currently in use.
+
+#### Color palette
+
+Two coherent palettes built around the brand blue. The light-mode background carries a subtle blue tint that ties into the brand. Always-dark tokens (`--color-tile`, `--color-tile-foreground`) are theme-invariant — they apply to elements (hex tiles, marquee banner, resume links) that are intentionally dark in both modes and sit as accent elements on whichever background is behind them.
+
+| Token | Light | Dark |
+|---|---|---|
+| `--color-background` | `hsl(220 25% 96%)` — soft blue-tinted off-white | `hsl(233 100% 5%)` — deep navy (`#000319`) |
+| `--color-foreground` | `hsl(222 25% 11%)` — deep navy | `hsl(0 0% 96%)` — near-white |
+| `--color-card` | `hsl(0 0% 100%)` — white (elevation above bg) | `hsl(233 40% 9%)` — lighter navy than bg |
+| `--color-muted-foreground` | `hsl(222 12% 44%)` — blue-gray | `hsl(220 15% 62%)` — lighter blue-gray |
+| `--color-border` | `hsl(220 20% 89%)` — subtle blue-tinted | `hsl(233 30% 17%)` — subtle dark |
+| `--color-primary` | `hsl(222 25% 11%)` — dark navy button | `hsl(0 0% 98%)` — near-white button |
+| `--color-brand` | `#0071e3` | `#2997ff` |
+| `--color-tile` | `hsl(240 15% 14%)` — **never changes** | same |
+| `--color-tile-foreground` | `hsl(0 0% 90%)` — **never changes** | same |
 - **Shape language** (decided 2026-06-24, extended 2026-06-25): the Tech Stack hexagon tiles are the seed of a unifying angular motif — a single 45° chamfered corner, direction carrying semantic meaning:
   - **Top-right** (`corner-cut($size)` mixin) = interactive chrome: CTA buttons (`MagicButton`), marquee tiles, resume links, list bullets. Done.
   - **Top-left** (`corner-cut-left($size)` mixin) = content cards: About bento tiles, experience/education cards, marquee banner, stat tile. Done.
@@ -114,7 +130,7 @@ Reasoning: lock the decisions everything else inherits from before touching comp
    - [x] Tech Stack — hex icon tiles, scrolling marquee, stat tile, CSS Modules. Corner-cut-left on stat tile and marquee banner.
    - [x] About — full bento grid, 8 tiles, 4 photos, corner-cut-left on all tiles. See About section above.
    - [x] Work Experience — unified vertical timeline, CSS Modules, education section, corner-cut-left on cards. See Work Experience section above.
-   - [ ] Navigation — fixed top bar, blur background, Intersection Observer active-link highlight, clean up section IDs site-wide (see Navigation notes above).
+   - [x] Navigation — fixed top bar, blur background, Intersection Observer active-link highlight, clean up section IDs site-wide (see Navigation notes above).
    - [ ] Hero — `Hero.module.scss`, apply new type/color, italic accent word + bordered role pill, chunky pill CTA, floating stat callout card, add cursor-reactive signature moment if chosen.
 
 5. **Layer in signature moments** (scroll-linked reveals, theme toggle transition, etc.) once the calm baseline reads consistently across all sections in both themes. Pick 2-3 from:
@@ -122,9 +138,9 @@ Reasoning: lock the decisions everything else inherits from before touching comp
    - [ ] Scroll-linked reveal sequence across sections (fade/slide-up, staggered).
    - [ ] Custom dark/light theme toggle with a smooth, deliberate transition (not just an instant class swap).
 
-6. **Remove Tailwind entirely** (only once every component above is ported off it):
-   - [ ] Uninstall `tailwindcss`, `@tailwindcss/postcss`, `tailwindcss-animate`, `mini-svg-data-uri`, `tailwind-merge`.
-   - [ ] Delete `tailwind.config.ts` and the Tailwind PostCSS config.
-   - [ ] Simplify or remove `cn()` in `lib/utils.ts` (no more class-merge conflicts to resolve without Tailwind).
-   - [ ] Grep for any leftover Tailwind classNames that slipped through the section-by-section pass.
+6. **Remove Tailwind entirely** — **Done**:
+   - [x] Uninstall `tailwindcss`, `@tailwindcss/postcss`, `tailwindcss-animate`, `mini-svg-data-uri`, `tailwind-merge`.
+   - [x] Delete `tailwind.config.ts` and the Tailwind PostCSS config.
+   - [x] Simplify or remove `cn()` in `lib/utils.ts` (deleted — `TextGenerateEffect` now combines classes via template literal).
+   - [x] Grep for any leftover Tailwind classNames that slipped through the section-by-section pass.
 
