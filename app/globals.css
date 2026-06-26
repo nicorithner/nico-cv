@@ -77,6 +77,9 @@ video {
   --color-tile: hsl(240 15% 14%);
   --color-tile-foreground: hsl(0 0% 90%);
 
+  /* Decorative hex grid outline */
+  --color-hex-decoration: hsl(222 18% 62%);
+
   /* Radius */
   --radius-lg: 0.5rem;
   --radius-md: calc(0.5rem - 2px);
@@ -159,4 +162,5 @@ video {
   --color-input: hsl(233 30% 17%);
   --color-ring: hsl(220 15% 62%);
   --color-brand: #2997ff;
+  --color-hex-decoration: hsl(220 40% 55%);
 }

@@ -2,6 +2,8 @@
 @use "shapes" as *;
 
 .section {
+  position: relative;
+  z-index: 1;           // paints above the HexGrid SVG that overflows from Hero
   padding: var(--space-20) var(--space-4);
   max-width: 72rem;
   margin: 0 auto;

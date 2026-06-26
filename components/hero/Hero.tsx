@@ -2,11 +2,13 @@ import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 import MagicButton from "../buttons/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 import Image from "next/image";
+import HexGrid from "./HexGrid";
 import styles from "./Hero.module.scss";
 
 const Hero = () => {
   return (
     <div className={styles.hero}>
+      <HexGrid />
       <div className={styles.inner}>
         <Image
           className={styles.headshot}

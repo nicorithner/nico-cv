@@ -82,15 +82,24 @@ export default function WorkExperience() {
         ))}
       </div>
 
-      <div className={styles.resumeLinks}>
-        <ResumeLink
-          title="Få min CV"
-          url="https://drive.google.com/file/d/1x5EJ1wtRdTpoy0SVLGMYxqF7xtTN98eA/view?usp=sharing"
-        />
-        <ResumeLink
-          title="Grab My Resume"
-          url="https://drive.google.com/file/d/1iPixGsLv2gI243FcHbFkPHR6r6_6wzhq/view?usp=sharing"
-        />
+      <div id="resume" className={styles.resumeSection}>
+        <p className={styles.resumeLabel}>Download</p>
+        <h3 className={styles.resumeHeading}>
+          Get My <span className={styles.accent}>CV</span>
+        </h3>
+        <p className={styles.resumeSubtext}>
+          Available in Norwegian and English
+        </p>
+        <div className={styles.resumeLinks}>
+          <ResumeLink
+            title="Få min CV"
+            url="https://drive.google.com/file/d/1x5EJ1wtRdTpoy0SVLGMYxqF7xtTN98eA/view?usp=sharing"
+          />
+          <ResumeLink
+            title="Grab My Resume"
+            url="https://drive.google.com/file/d/1iPixGsLv2gI243FcHbFkPHR6r6_6wzhq/view?usp=sharing"
+          />
+        </div>
       </div>
     </section>
   );
