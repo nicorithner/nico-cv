@@ -26,13 +26,12 @@ const Hero = () => {
             <span className={styles.brand}>Fullstack</span> Software Developer
           </p>
           <div className={styles.cta}>
-            <a href="#experience">
-              <MagicButton
-                title="Experience"
-                icon={<FaLocationArrow />}
-                position="right"
-              />
-            </a>
+            <MagicButton
+              title="Experience"
+              icon={<FaLocationArrow />}
+              position="right"
+              href="#experience"
+            />
           </div>
         </div>
       </div>

@@ -94,7 +94,7 @@ export const education = [
       "TDD",
       "RSpec",
       "Git",
-      "Github",
+      "GitHub",
     ],
     desc: [
       "1500+ hours, 7-month immersive program.",

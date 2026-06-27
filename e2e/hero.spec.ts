@@ -28,7 +28,7 @@ test.describe("Hero section", () => {
     );
   });
 
-  test("CTA button links to the experience section", async ({ page }) => {
+  test("CTA links to the experience section", async ({ page }) => {
     const cta = page.getByTestId("hero").getByRole("link", {
       name: /experience/i,
     });

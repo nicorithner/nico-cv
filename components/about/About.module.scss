@@ -70,7 +70,7 @@
   text-align: center;
 
   @include respond-to(lg) {
-    grid-area: remote;
+    grid-area: usaw;
     align-items: flex-start;
     text-align: left;
   }
@@ -95,7 +95,7 @@
 
 .tileLocation {
   grid-column: span 2;
-  @include respond-to(lg) { grid-area: usaw; }
+  @include respond-to(lg) { grid-area: remote; }
 }
 
 .tileSkiPhoto {
