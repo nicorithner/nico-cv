@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans} from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
-
-const fontSans =  Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: "--font-sans",
-});
+import Navigation from "../components/navigation/Navigation";
 
 export const metadata: Metadata = {
   title: "Nico Rithner software development",
-  description: "Nico Rithner, professional Fullsatck software developer.",
+  description: "Nico Rithner, professional Fullstack software developer.",
 };
 
 export default function RootLayout({
@@ -21,13 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={fontSans.className}>
+      <body className={GeistSans.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <Navigation />
           {children}
         </ThemeProvider>
       </body>

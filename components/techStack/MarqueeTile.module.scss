@@ -1,0 +1,13 @@
+@use "shapes" as *;
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--color-tile);
+  color: var(--color-tile-foreground);
+  @include corner-cut(0.5rem);
+}

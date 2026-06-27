@@ -1,0 +1,19 @@
+@mixin corner-cut($size: 0.75rem) {
+  clip-path: polygon(
+    0 0,
+    calc(100% - #{$size}) 0,
+    100% #{$size},
+    100% 100%,
+    0 100%
+  );
+}
+
+@mixin corner-cut-left($size: 0.75rem) {
+  clip-path: polygon(
+    #{$size} 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 #{$size}
+  );
+}

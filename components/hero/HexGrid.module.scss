@@ -1,0 +1,29 @@
+@use "breakpoints" as *;
+
+.hexGrid {
+  display: none;
+
+  @include respond-to(lg) {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;          // scales proportionally — naturally extends below the hero
+    pointer-events: none;
+    z-index: 0;
+    // Fade the left edge so the text area stays clean
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 22%,
+      black 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 22%,
+      black 100%
+    );
+  }
+}

@@ -1,0 +1,21 @@
+.wrapper {
+  font-weight: var(--font-weight-bold);
+}
+
+.inner {
+  margin: var(--space-4) 0;
+}
+
+.words {
+  color: var(--color-foreground);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-wide);
+}
+
+.word {
+  color: var(--color-foreground);
+}
+
+.wordBrand {
+  color: var(--color-brand);
+}

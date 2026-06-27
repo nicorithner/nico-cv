@@ -1,5 +1,10 @@
+import path from "path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  sassOptions: {
+    loadPaths: [path.join(process.cwd(), "styles")],
+  },
   images: {
     remotePatterns: [
       {
