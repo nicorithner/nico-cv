@@ -26,20 +26,11 @@ export default function About() {
           </p>
         </div>
 
-        {/* USAW Coaching — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileUsaw}`} data-testid="about-usaw">
-          <Image
-            src="/usaw-logo-shield.png"
-            alt="USA Weightlifting"
-            width={72}
-            height={56}
-            className={styles.usawLogo}
-          />
-          <span className={styles.tileLabel}>USAW Certified Coach</span>
-          <span className={styles.stat}>19</span>
+        {/* Availability — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileLocation}`} data-testid="about-availability">
+          <span className={styles.tileLabel}>Open to Opportunities</span>
           <p className={styles.tileText}>
-            Years coaching recreational and competitive lifters — including
-            athletes on the Norwegian national weightlifting team.
+            Seeking fullstack roles in the <strong>USA</strong> or <strong>Norway</strong> — hybrid, remote, or onsite.
           </p>
         </div>
 
@@ -100,6 +91,23 @@ export default function About() {
           />
         </div>
 
+        {/* USAW Coaching — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileUsaw}`} data-testid="about-usaw">
+          <Image
+            src="/usaw-logo-shield.png"
+            alt="USA Weightlifting"
+            width={72}
+            height={56}
+            className={styles.usawLogo}
+          />
+          <span className={styles.tileLabel}>USAW Certified Coach</span>
+          <span className={styles.stat}>19</span>
+          <p className={styles.tileText}>
+            Years coaching recreational and competitive lifters — including
+            athletes on the Norwegian national weightlifting team.
+          </p>
+        </div>
+
         {/* Nordic Skiing — 2 cols, action photo */}
         <div className={`${styles.tile} ${styles.tileSkiPhoto} ${styles.photoTile}`} data-testid="about-nordic">
           <Image
@@ -130,14 +138,6 @@ export default function About() {
             <span className={styles.tileLabelLight}>Winter Park, CO</span>
             <p className={styles.tileTextLight}>Continental Divide 12,000 ft · Mountain Time</p>
           </div>
-        </div>
-
-        {/* Availability — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileLocation}`} data-testid="about-availability">
-          <span className={styles.tileLabel}>Open to Opportunities</span>
-          <p className={styles.tileText}>
-            Seeking fullstack roles in the <strong>USA</strong> or <strong>Norway</strong> — hybrid, remote, or onsite.
-          </p>
         </div>
 
       </div>

@@ -83,20 +83,12 @@ export default function WorkExperience() {
       </div>
 
       <div id="resume" className={styles.resumeSection} data-testid="resume-cta">
-        <p className={styles.resumeLabel}>Download</p>
         <h3 className={styles.resumeHeading}>
-          Get My <span className={styles.accent}>CV</span>
+          Get My <span className={styles.accent}>Resume</span>
         </h3>
-        <p className={styles.resumeSubtext}>
-          Available in Norwegian and English
-        </p>
         <div className={styles.resumeLinks}>
           <ResumeLink
-            title="Få min CV"
-            url="https://drive.google.com/file/d/1x5EJ1wtRdTpoy0SVLGMYxqF7xtTN98eA/view?usp=sharing"
-          />
-          <ResumeLink
-            title="Grab My Resume"
+            title="Nico Rithner's Resume"
             url="https://drive.google.com/file/d/1iPixGsLv2gI243FcHbFkPHR6r6_6wzhq/view?usp=sharing"
           />
         </div>

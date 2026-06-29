@@ -36,9 +36,9 @@
   @include respond-to(lg) {
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
-      "bio    bio    bio    bio    usaw   usaw"
+      "bio    bio    bio    bio    remote remote"
       "norway norway lang   lang   nico   nico"
-      "norway norway remote remote nico   nico"
+      "norway norway usaw   usaw   nico   nico"
       "nordic nordic winter winter winter winter";
   }
 }
