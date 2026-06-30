@@ -19,11 +19,14 @@ test.describe("Work Experience section", () => {
     );
   });
 
-  test("shows all three jobs", async ({ page }) => {
+  test("shows all three jobs via carousel navigation", async ({ page }) => {
     const section = page.getByTestId("experience-section");
-    for (const company of JOBS) {
-      await expect(section).toContainText(company);
-    }
+    const next = page.getByRole("button", { name: "Previous job" });
+    await expect(section).toContainText(JOBS[0]);
+    await next.click();
+    await expect(section).toContainText(JOBS[1]);
+    await next.click();
+    await expect(section).toContainText(JOBS[2]);
   });
 
   test("FyrKode card shows the part-time badge", async ({ page }) => {
