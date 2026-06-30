@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaApple } from "react-icons/fa";
 import { Us, Es, No } from "react-flags-select";
 import styles from "./About.module.scss";
 
@@ -28,9 +29,10 @@ export default function About() {
 
         {/* Availability — 2 cols */}
         <div className={`${styles.tile} ${styles.tileLocation}`} data-testid="about-availability">
-          <span className={styles.tileLabel}>Open to Opportunities</span>
+          <span className={styles.tileLabel}>Craft-Focused Engineer</span>
           <p className={styles.tileText}>
-            Seeking fullstack roles in the <strong>USA</strong> or <strong>Norway</strong> — hybrid, remote, or onsite.
+            I build things that feel good to use, not just things that work.
+            Open to fullstack roles in the <strong>USA</strong> or <strong>Norway</strong>.
           </p>
         </div>
 
@@ -58,24 +60,18 @@ export default function About() {
           <div className={styles.langList}>
             <div className={styles.langRow}>
               <Us className={styles.flag} />
-              <div>
-                <p className={styles.langName}>English</p>
-                <p className={styles.langLevel}>Fluent</p>
-              </div>
+              <p className={styles.langName}>English</p>
+              <p className={styles.langLevel}>Fluent</p>
             </div>
             <div className={styles.langRow}>
               <Es className={styles.flag} />
-              <div>
-                <p className={styles.langName}>Español</p>
-                <p className={styles.langLevel}>Native</p>
-              </div>
+              <p className={styles.langName}>Español</p>
+              <p className={styles.langLevel}>Native</p>
             </div>
             <div className={styles.langRow}>
               <No className={styles.flag} />
-              <div>
-                <p className={styles.langName}>Norsk Bokmål</p>
-                <p className={styles.langLevel}>Intermediate</p>
-              </div>
+              <p className={styles.langName}>Bokmål</p>
+              <p className={styles.langLevel}>Intermediate</p>
             </div>
           </div>
         </div>
@@ -106,6 +102,36 @@ export default function About() {
             Years coaching recreational and competitive lifters — including
             athletes on the Norwegian national weightlifting team.
           </p>
+        </div>
+
+        {/* InFokus — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileInfokus}`} data-testid="about-infokus">
+          <div className={styles.infokusImgWrap}>
+            <Image
+              src="/focus-timer-collage.png"
+              alt="InFokus app screens"
+              fill
+              className={styles.infokusImg}
+              sizes="(max-width: 1024px) 50vw, 25vw"
+            />
+          </div>
+          <div className={styles.infokusContent}>
+            <span className={styles.tileLabel}>Side Project</span>
+            <p className={styles.infokusTitle}>InFokus</p>
+            <p className={styles.tileText}>
+              A Pomodoro-style iOS focus timer built to add friction to
+              checking social media — making distraction a deliberate choice.
+            </p>
+            <a
+              href="https://apps.apple.com/us/app/infokus/id6766743674"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.appStoreLink}
+            >
+              <FaApple />
+              App Store
+            </a>
+          </div>
         </div>
 
         {/* Nordic Skiing — 2 cols, action photo */}

@@ -37,9 +37,9 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
       "bio    bio    bio    bio    remote remote"
+      "norway norway infokus infokus nico   nico"
       "norway norway lang   lang   nico   nico"
-      "norway norway usaw   usaw   nico   nico"
-      "nordic nordic winter winter winter winter";
+      "nordic nordic usaw   usaw   winter winter";
   }
 }
 
@@ -95,6 +95,7 @@
 
 .tileLocation {
   grid-column: span 2;
+  justify-content: center;
   @include respond-to(lg) { grid-area: remote; }
 }
 
@@ -107,6 +108,79 @@
 .tileNordic {
   grid-column: span 2;
   @include respond-to(lg) { grid-area: winter; }
+}
+
+.tileInfokus {
+  grid-column: span 2;
+  overflow: hidden;
+  min-height: 18rem;
+
+  @include respond-to(lg) {
+    grid-area: infokus;
+    min-height: 20rem;
+  }
+}
+
+.infokusImgWrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 100%;
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(to right, var(--color-card) 0%, transparent 40%),
+      linear-gradient(to top, var(--color-card) 0%, transparent 30%);
+  }
+}
+
+.infokusImg {
+  object-fit: contain;
+  object-position: right top;
+}
+
+.infokusTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-foreground);
+
+  @include respond-to(lg) {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+.infokusContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+.appStoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand);
+  text-decoration: none;
+  transition: opacity 150ms ease;
+
+  svg {
+    font-size: 1.1em;
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
 // ── Photo tiles ────────────────────────────────────────────────────────────
@@ -268,4 +342,9 @@
 .langLevel {
   font-size: var(--font-size-sm);
   color: var(--color-muted-foreground);
+
+  &::before {
+    content: "·";
+    margin-right: var(--space-3);
+  }
 }
