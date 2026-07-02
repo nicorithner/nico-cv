@@ -21,7 +21,7 @@ test.describe("Work Experience section", () => {
 
   test("shows all three jobs via carousel navigation", async ({ page }) => {
     const section = page.getByTestId("experience-section");
-    const next = page.getByRole("button", { name: "Previous job" });
+    const next = page.getByRole("button", { name: "Next job" });
     await expect(section).toContainText(JOBS[0]);
     await next.click();
     await expect(section).toContainText(JOBS[1]);

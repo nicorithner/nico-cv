@@ -65,8 +65,8 @@ export default function ExperienceCarousel() {
               animate={getAnimate(pos)}
               transition={{ type: "spring", stiffness: 260, damping: 26 }}
               onClick={() => {
-                if (pos === 1) prev();
-                if (pos === -1) next();
+                if (pos === 1) next();
+                if (pos === -1) prev();
               }}
             >
               {entry.thumbnail && (
@@ -87,7 +87,7 @@ export default function ExperienceCarousel() {
       <div className={styles.controls}>
         <button
           className={styles.arrow}
-          onClick={next}
+          onClick={prev}
           aria-label="Previous job"
         >
           <FiArrowLeft />
@@ -104,7 +104,7 @@ export default function ExperienceCarousel() {
         </div>
         <button
           className={styles.arrow}
-          onClick={prev}
+          onClick={next}
           aria-label="Next job"
         >
           <FiArrowRight />
