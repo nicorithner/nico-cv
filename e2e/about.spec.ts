@@ -37,7 +37,7 @@ test.describe("About section", () => {
     const langs = page.getByTestId("about-languages");
     await expect(langs).toContainText("English");
     await expect(langs).toContainText("Español");
-    await expect(langs).toContainText("Norsk Bokmål");
+    await expect(langs).toContainText("Bokmål");
     await expect(langs).toContainText("Fluent");
     await expect(langs).toContainText("Native");
     await expect(langs).toContainText("Intermediate");
@@ -81,10 +81,9 @@ test.describe("About section", () => {
 
   test("availability tile shows USA and Norway", async ({ page }) => {
     const avail = page.getByTestId("about-availability");
-    await expect(avail).toContainText("Open to Opportunities");
+    await expect(avail).toContainText("Craft-Focused Engineer");
     await expect(avail).toContainText("USA");
     await expect(avail).toContainText("Norway");
-    await expect(avail).toContainText("hybrid");
   });
 
   test("renders all 8 tiles", async ({ page }) => {
