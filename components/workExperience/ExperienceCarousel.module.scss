@@ -1,0 +1,199 @@
+@use "breakpoints" as *;
+@use "shapes" as *;
+
+.wrapper {
+  margin-bottom: var(--space-4);
+}
+
+// ── Image carousel ─────────────────────────────────────────────────────────
+
+.stage {
+  position: relative;
+  height: 18rem;
+  overflow: hidden;
+
+  @include respond-to(lg) {
+    height: 22rem;
+  }
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: var(--color-card);
+  @include corner-cut-left(1.5rem);
+  overflow: hidden;
+}
+
+.cardSide {
+  cursor: pointer;
+}
+
+.img {
+  object-fit: contain;
+  object-position: center center;
+}
+
+// ── Controls ───────────────────────────────────────────────────────────────
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-foreground);
+  cursor: pointer;
+  font-size: 1.125rem;
+  transition: border-color 150ms ease, color 150ms ease;
+
+  &:hover {
+    border-color: var(--color-brand);
+    color: var(--color-brand);
+  }
+}
+
+.dots {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 200ms ease;
+
+  &:hover {
+    background-color: var(--color-muted-foreground);
+  }
+}
+
+.dotActive {
+  background-color: var(--color-brand);
+}
+
+// ── Text panel ─────────────────────────────────────────────────────────────
+
+.textPanel {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.panelHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.company {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+
+  @include respond-to(lg) {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+.badge {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  padding: 0.15rem var(--space-2);
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.role {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-muted-foreground);
+}
+
+.meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.panelBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.desc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.descItem {
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-relaxed);
+  padding-left: var(--space-5);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    background-color: var(--color-brand);
+    clip-path: polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 0 100%);
+  }
+
+  @include respond-to(lg) {
+    font-size: var(--font-size-base);
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+}
+
+.tag {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand);
+}

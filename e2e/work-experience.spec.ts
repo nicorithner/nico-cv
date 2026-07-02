@@ -19,11 +19,14 @@ test.describe("Work Experience section", () => {
     );
   });
 
-  test("shows all three jobs", async ({ page }) => {
+  test("shows all three jobs via carousel navigation", async ({ page }) => {
     const section = page.getByTestId("experience-section");
-    for (const company of JOBS) {
-      await expect(section).toContainText(company);
-    }
+    const next = page.getByRole("button", { name: "Next job" });
+    await expect(section).toContainText(JOBS[0]);
+    await next.click();
+    await expect(section).toContainText(JOBS[1]);
+    await next.click();
+    await expect(section).toContainText(JOBS[2]);
   });
 
   test("FyrKode card shows the part-time badge", async ({ page }) => {
@@ -41,33 +44,17 @@ test.describe("Work Experience section", () => {
     await expect(section).toContainText("Certified Backend Software Developer");
   });
 
-  test("resume CTA renders label, heading, and subtext", async ({ page }) => {
+  test("resume CTA renders the heading", async ({ page }) => {
     const cta = page.getByTestId("resume-cta");
-    await expect(cta).toContainText("Download");
-    await expect(cta).toContainText("Get My CV");
-    await expect(cta).toContainText("Available in Norwegian and English");
+    await expect(cta).toContainText("Get My Resume");
   });
 
-  test("Norwegian CV link has correct href and opens in a new tab", async ({
+  test("resume link has correct href and opens in a new tab", async ({
     page,
   }) => {
     const link = page
       .getByTestId("resume-cta")
-      .getByRole("link", { name: /Få min CV/i });
-    await expect(link).toHaveAttribute(
-      "href",
-      "https://drive.google.com/file/d/1x5EJ1wtRdTpoy0SVLGMYxqF7xtTN98eA/view?usp=sharing"
-    );
-    await expect(link).toHaveAttribute("target", "_blank");
-    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
-  });
-
-  test("English resume link has correct href and opens in a new tab", async ({
-    page,
-  }) => {
-    const link = page
-      .getByTestId("resume-cta")
-      .getByRole("link", { name: /Grab My Resume/i });
+      .getByRole("link", { name: /Nico Rithner's Resume/i });
     await expect(link).toHaveAttribute(
       "href",
       "https://drive.google.com/file/d/1iPixGsLv2gI243FcHbFkPHR6r6_6wzhq/view?usp=sharing"

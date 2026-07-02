@@ -1,4 +1,5 @@
-import { workExperience, education } from "../../data";
+import { education } from "../../data";
+import ExperienceCarousel from "./ExperienceCarousel";
 import ResumeLink from "./ResumeLink";
 import styles from "./WorkExperience.module.scss";
 
@@ -9,42 +10,7 @@ export default function WorkExperience() {
         My <span className={styles.accent}>Experience</span>
       </h2>
 
-      <div className={styles.timeline}>
-        {workExperience.map((job) => (
-          <article key={job.id} className={styles.card}>
-            <div className={styles.cardHeader}>
-              <span className={styles.company}>{job.company}</span>
-              <div className={styles.titleRow}>
-                <span className={styles.role}>{job.title}</span>
-                {job.partTime && (
-                  <span className={styles.badge}>Part-time</span>
-                )}
-              </div>
-              <span className={styles.meta}>
-                {job.location}&nbsp;&middot;&nbsp;{job.years[0]}–{job.years[1]}
-              </span>
-            </div>
-
-            <div className={styles.divider} />
-
-            <div className={styles.tags}>
-              {job.stack.map((tech) => (
-                <span key={tech} className={styles.tag}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <ul className={styles.desc}>
-              {job.desc.map((item, i) => (
-                <li key={i} className={styles.descItem}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
+      <ExperienceCarousel />
 
       <p className={styles.subheading}>Education</p>
 
@@ -83,20 +49,12 @@ export default function WorkExperience() {
       </div>
 
       <div id="resume" className={styles.resumeSection} data-testid="resume-cta">
-        <p className={styles.resumeLabel}>Download</p>
         <h3 className={styles.resumeHeading}>
-          Get My <span className={styles.accent}>CV</span>
+          Get My <span className={styles.accent}>Resume</span>
         </h3>
-        <p className={styles.resumeSubtext}>
-          Available in Norwegian and English
-        </p>
         <div className={styles.resumeLinks}>
           <ResumeLink
-            title="Få min CV"
-            url="https://drive.google.com/file/d/1x5EJ1wtRdTpoy0SVLGMYxqF7xtTN98eA/view?usp=sharing"
-          />
-          <ResumeLink
-            title="Grab My Resume"
+            title="Nico Rithner's Resume"
             url="https://drive.google.com/file/d/1iPixGsLv2gI243FcHbFkPHR6r6_6wzhq/view?usp=sharing"
           />
         </div>

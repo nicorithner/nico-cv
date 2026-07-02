@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaApple } from "react-icons/fa";
 import { Us, Es, No } from "react-flags-select";
 import styles from "./About.module.scss";
 
@@ -24,6 +25,78 @@ export default function About() {
           <p className={styles.bioPara}>
             Volunteer. Swimmer. Hiker. Perpetually curious about the world.
           </p>
+        </div>
+
+        {/* Availability — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileLocation}`} data-testid="about-availability">
+          <span className={styles.tileLabel}>Craft-Focused Engineer</span>
+          <p className={styles.tileText}>
+            I build things that feel good to use, not just things that work.
+            Open to fullstack roles in the <strong>USA</strong> or <strong>Norway</strong>.
+          </p>
+        </div>
+
+        {/* InFokus — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileInfokus}`} data-testid="about-infokus">
+          <div className={styles.infokusImgWrap}>
+            <Image
+              src="/focus-timer-collage.png"
+              alt="InFokus app screens"
+              fill
+              className={styles.infokusImg}
+              sizes="(max-width: 1024px) 50vw, 25vw"
+            />
+          </div>
+          <div className={styles.infokusContent}>
+            <span className={styles.tileLabel}>Side Project</span>
+            <p className={styles.infokusTitle}>InFokus</p>
+            <p className={styles.tileText}>
+              A Pomodoro-style iOS focus timer built to add friction to
+              checking social media — making distraction a deliberate choice.
+            </p>
+            <a
+              href="https://apps.apple.com/us/app/infokus/id6766743674"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.appStoreLink}
+            >
+              <FaApple />
+              App Store
+            </a>
+          </div>
+        </div>
+
+        {/* Languages — 3 cols */}
+        <div className={`${styles.tile} ${styles.tileLanguages}`} data-testid="about-languages">
+          <span className={styles.tileLabel}>Languages</span>
+          <div className={styles.langList}>
+            <div className={styles.langRow}>
+              <Us className={styles.flag} />
+              <p className={styles.langName}>English</p>
+              <p className={styles.langLevel}>Fluent</p>
+            </div>
+            <div className={styles.langRow}>
+              <Es className={styles.flag} />
+              <p className={styles.langName}>Español</p>
+              <p className={styles.langLevel}>Native</p>
+            </div>
+            <div className={styles.langRow}>
+              <No className={styles.flag} />
+              <p className={styles.langName}>Bokmål</p>
+              <p className={styles.langLevel}>Intermediate</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Nico in the Colorado mountains — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileExtra} ${styles.photoTile}`} data-testid="about-portrait">
+          <Image
+            src="/nico-ski-shop.webp"
+            alt="Nico at the ski shop"
+            fill
+            className={styles.photoTop}
+            sizes="(max-width: 1024px) 100vw, 33vw"
+          />
         </div>
 
         {/* USAW Coaching — 2 cols */}
@@ -61,45 +134,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Languages — 3 cols */}
-        <div className={`${styles.tile} ${styles.tileLanguages}`} data-testid="about-languages">
-          <span className={styles.tileLabel}>Languages</span>
-          <div className={styles.langList}>
-            <div className={styles.langRow}>
-              <Us className={styles.flag} />
-              <div>
-                <p className={styles.langName}>English</p>
-                <p className={styles.langLevel}>Fluent</p>
-              </div>
-            </div>
-            <div className={styles.langRow}>
-              <Es className={styles.flag} />
-              <div>
-                <p className={styles.langName}>Español</p>
-                <p className={styles.langLevel}>Native</p>
-              </div>
-            </div>
-            <div className={styles.langRow}>
-              <No className={styles.flag} />
-              <div>
-                <p className={styles.langName}>Norsk Bokmål</p>
-                <p className={styles.langLevel}>Intermediate</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Nico in the Colorado mountains — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileExtra} ${styles.photoTile}`} data-testid="about-portrait">
-          <Image
-            src="/nico-ski-shop.webp"
-            alt="Nico at the ski shop"
-            fill
-            className={styles.photoTop}
-            sizes="(max-width: 1024px) 100vw, 33vw"
-          />
-        </div>
-
         {/* Nordic Skiing — 2 cols, action photo */}
         <div className={`${styles.tile} ${styles.tileSkiPhoto} ${styles.photoTile}`} data-testid="about-nordic">
           <Image
@@ -130,14 +164,6 @@ export default function About() {
             <span className={styles.tileLabelLight}>Winter Park, CO</span>
             <p className={styles.tileTextLight}>Continental Divide 12,000 ft · Mountain Time</p>
           </div>
-        </div>
-
-        {/* Availability — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileLocation}`} data-testid="about-availability">
-          <span className={styles.tileLabel}>Open to Opportunities</span>
-          <p className={styles.tileText}>
-            Seeking fullstack roles in the <strong>USA</strong> or <strong>Norway</strong> — hybrid, remote, or onsite.
-          </p>
         </div>
 
       </div>
