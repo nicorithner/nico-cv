@@ -4,12 +4,12 @@
 .section {
   position: relative;
   z-index: 1;           // paints above the HexGrid SVG that overflows from Hero
-  padding: var(--space-20) var(--space-4);
+  padding: 0 var(--space-4) var(--space-20);
   max-width: 72rem;
   margin: 0 auto;
 
   @include respond-to(lg) {
-    padding: var(--space-20) 0;
+    padding: 0 0 var(--space-20);
   }
 }
 
@@ -36,10 +36,10 @@
   @include respond-to(lg) {
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
-      "bio    bio    bio    bio    remote remote"
-      "norway norway infokus infokus nico   nico"
-      "norway norway lang   lang   nico   nico"
-      "nordic nordic usaw   usaw   winter winter";
+      "bio     bio     bio     bio     remote  remote"
+      "infokus infokus lang    lang    nico    nico"
+      "norway  norway  norway  norway  nico    nico"
+      "nordic  nordic  usaw    usaw    winter  winter";
   }
 }
 
@@ -281,6 +281,7 @@
 }
 
 .bioPara {
+  margin: 0;
   font-size: var(--font-size-base);
   line-height: var(--leading-relaxed);
   color: var(--color-muted-foreground);

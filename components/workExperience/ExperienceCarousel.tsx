@@ -61,7 +61,7 @@ export default function ExperienceCarousel() {
             <motion.div
               key={entry.id}
               className={`${styles.card} ${pos !== 0 ? styles.cardSide : ""}`}
-              style={{ width: CARD_W }}
+              style={{ width: CARD_W, backgroundColor: entry.cardBg ?? undefined }}
               animate={getAnimate(pos)}
               transition={{ type: "spring", stiffness: 260, damping: 26 }}
               onClick={() => {

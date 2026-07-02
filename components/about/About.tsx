@@ -36,21 +36,33 @@ export default function About() {
           </p>
         </div>
 
-        {/* Norway — 3 cols */}
-        <div className={`${styles.tile} ${styles.tileNorway} ${styles.photoTile}`} data-testid="about-norway">
-          <Image
-            src="/nordsetter-2026.webp"
-            alt="Nordsetter, Norway"
-            fill
-            className={styles.photo}
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-          <div className={styles.photoOverlay}>
-            <No className={styles.flag} />
-            <span className={styles.tileLabelLight}>Norway</span>
-            <p className={styles.tileTextLight}>
-              Home away from home — the country, the people, the language, and its sports.
+        {/* InFokus — 2 cols */}
+        <div className={`${styles.tile} ${styles.tileInfokus}`} data-testid="about-infokus">
+          <div className={styles.infokusImgWrap}>
+            <Image
+              src="/focus-timer-collage.png"
+              alt="InFokus app screens"
+              fill
+              className={styles.infokusImg}
+              sizes="(max-width: 1024px) 50vw, 25vw"
+            />
+          </div>
+          <div className={styles.infokusContent}>
+            <span className={styles.tileLabel}>Side Project</span>
+            <p className={styles.infokusTitle}>InFokus</p>
+            <p className={styles.tileText}>
+              A Pomodoro-style iOS focus timer built to add friction to
+              checking social media — making distraction a deliberate choice.
             </p>
+            <a
+              href="https://apps.apple.com/us/app/infokus/id6766743674"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.appStoreLink}
+            >
+              <FaApple />
+              App Store
+            </a>
           </div>
         </div>
 
@@ -104,33 +116,21 @@ export default function About() {
           </p>
         </div>
 
-        {/* InFokus — 2 cols */}
-        <div className={`${styles.tile} ${styles.tileInfokus}`} data-testid="about-infokus">
-          <div className={styles.infokusImgWrap}>
-            <Image
-              src="/focus-timer-collage.png"
-              alt="InFokus app screens"
-              fill
-              className={styles.infokusImg}
-              sizes="(max-width: 1024px) 50vw, 25vw"
-            />
-          </div>
-          <div className={styles.infokusContent}>
-            <span className={styles.tileLabel}>Side Project</span>
-            <p className={styles.infokusTitle}>InFokus</p>
-            <p className={styles.tileText}>
-              A Pomodoro-style iOS focus timer built to add friction to
-              checking social media — making distraction a deliberate choice.
+        {/* Norway — 3 cols */}
+        <div className={`${styles.tile} ${styles.tileNorway} ${styles.photoTile}`} data-testid="about-norway">
+          <Image
+            src="/nordsetter-2026.webp"
+            alt="Nordsetter, Norway"
+            fill
+            className={styles.photo}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className={styles.photoOverlay}>
+            <No className={styles.flag} />
+            <span className={styles.tileLabelLight}>Norway</span>
+            <p className={styles.tileTextLight}>
+              Home away from home — the country, the people, the language, and its sports.
             </p>
-            <a
-              href="https://apps.apple.com/us/app/infokus/id6766743674"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.appStoreLink}
-            >
-              <FaApple />
-              App Store
-            </a>
           </div>
         </div>
 

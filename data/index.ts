@@ -4,6 +4,7 @@ export const workExperience = [
     title: "Founder - Full Stack Engineer",
     company: "FyrKode Software Studio",
     thumbnail: "/fyrkode-hero-logo-lighthouse.png",
+    cardBg: "#0d1020",
     partTime: true,
     location: "Winter Park, CO USA",
     years: ["2024", "present"],
