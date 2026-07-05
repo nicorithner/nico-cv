@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 import styles from "./Navigation.module.scss";
 
 const NAV_LINKS = [
@@ -7,6 +8,19 @@ const NAV_LINKS = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Resume", href: "#resume" },
+] as const;
+
+const SOCIAL_LINKS = [
+  {
+    label: "GitHub",
+    href: "https://github.com/nicorithner",
+    icon: FiGithub,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/nicorithner",
+    icon: FiLinkedin,
+  },
 ] as const;
 
 export default function Navigation() {
@@ -45,19 +59,36 @@ export default function Navigation() {
         <a href="#" className={styles.logo} aria-label="Back to top">
           N<span className={styles.logoAccent}>R</span>
         </a>
-        <ul className={styles.links} role="list">
-          {NAV_LINKS.map(({ label, href }) => (
-            <li key={href}>
-              <a
-                href={href}
-                className={`${styles.link}${active === href ? ` ${styles.linkActive}` : ""}`}
-                aria-current={active === href ? "true" : undefined}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.navEnd}>
+          <ul className={styles.links} role="list">
+            {NAV_LINKS.map(({ label, href }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  className={`${styles.link}${active === href ? ` ${styles.linkActive}` : ""}`}
+                  aria-current={active === href ? "true" : undefined}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul className={styles.social} role="list">
+            {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                  aria-label={label}
+                >
+                  <Icon className={styles.socialIcon} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
     </header>
   );
