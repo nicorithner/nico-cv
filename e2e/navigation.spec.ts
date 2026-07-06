@@ -66,3 +66,45 @@ test.describe("Navigation", () => {
     await expect(page.getByTestId("resume-cta")).toBeInViewport();
   });
 });
+
+test.describe("Mobile navigation", () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/");
+  });
+
+  test("hides the nav links and shows the hamburger toggle", async ({
+    page,
+  }) => {
+    const nav = page.getByRole("navigation", { name: "Site navigation" });
+    for (const { label } of NAV_LINKS) {
+      await expect(nav.getByRole("link", { name: label })).toBeHidden();
+    }
+    await expect(page.getByRole("button", { name: "Open menu" })).toBeVisible();
+  });
+
+  test("keeps the social icons visible", async ({ page }) => {
+    const nav = page.getByRole("navigation", { name: "Site navigation" });
+    await expect(nav.getByRole("link", { name: "GitHub" })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "LinkedIn" })).toBeVisible();
+  });
+
+  test("opens the mobile menu and reveals nav links when the hamburger is clicked", async ({
+    page,
+  }) => {
+    await page.getByRole("button", { name: "Open menu" }).click();
+    const menu = page.locator("#mobile-menu");
+    await expect(menu).toBeVisible();
+    for (const { label } of NAV_LINKS) {
+      await expect(menu.getByRole("link", { name: label })).toBeVisible();
+    }
+    await expect(page.getByRole("button", { name: "Close menu" })).toBeVisible();
+  });
+
+  test("closes the mobile menu after clicking a link", async ({ page }) => {
+    await page.getByRole("button", { name: "Open menu" }).click();
+    await page.locator("#mobile-menu").getByRole("link", { name: "Skills" }).click();
+    await expect(page.locator("#mobile-menu")).toBeHidden();
+  });
+});
