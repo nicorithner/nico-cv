@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMenu, FiX } from "react-icons/fi";
 import styles from "./Navigation.module.scss";
 
 const NAV_LINKS = [
@@ -25,6 +25,7 @@ const SOCIAL_LINKS = [
 
 export default function Navigation() {
   const [active, setActive] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const visible = useRef<Set<string>>(new Set());
 
   useEffect(() => {
@@ -88,8 +89,34 @@ export default function Navigation() {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            className={styles.menuToggle}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
         </div>
       </nav>
+      {menuOpen && (
+        <ul id="mobile-menu" className={styles.mobileMenu} role="list">
+          {NAV_LINKS.map(({ label, href }) => (
+            <li key={href}>
+              <a
+                href={href}
+                className={`${styles.mobileLink}${active === href ? ` ${styles.linkActive}` : ""}`}
+                aria-current={active === href ? "true" : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </header>
   );
 }
