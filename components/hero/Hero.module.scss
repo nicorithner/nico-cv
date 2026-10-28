@@ -33,6 +33,14 @@
   height: 20rem;
   object-fit: cover;
   margin-top: var(--space-4);
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
 
   @include respond-to(lg) {
     order: 2;
