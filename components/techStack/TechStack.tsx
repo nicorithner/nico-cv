@@ -4,10 +4,13 @@ import {
   Css3Plain,
   JavaOriginal,
   JavascriptOriginal,
-  NextjsOriginal,
+  // NextjsOriginal,
   ReactOriginal,
   RubyPlain,
   TypescriptPlain,
+  PythonOriginal,
+  PostgresqlOriginal,
+  SqliteOriginal
 } from "devicons-react";
 import SkillsMarquee from "./SkillsMarquee";
 import StatTile from "./StatTile";
@@ -17,17 +20,19 @@ import styles from "./TechStack.module.scss";
 const ICON_SIZE = "4rem";
 
 const stack: { name: string; icon: ReactNode }[] = [
-  { name: "JavaScript", icon: <JavascriptOriginal size={ICON_SIZE} /> },
-  { name: "TypeScript", icon: <TypescriptPlain size={ICON_SIZE} /> },
-  { name: "React", icon: <ReactOriginal size={ICON_SIZE} /> },
-  { name: "Next.js", icon: <NextjsOriginal size={ICON_SIZE} /> },
-  { name: "CSS", icon: <Css3Plain size={ICON_SIZE} /> },
   { name: "Java", icon: <JavaOriginal size={ICON_SIZE} /> },
   { name: "Ruby", icon: <RubyPlain size={ICON_SIZE} /> },
+  { name: "Python", icon: <PythonOriginal size={ICON_SIZE} /> },
+  // { name: "JavaScript", icon: <JavascriptOriginal size={ICON_SIZE} /> },
+  { name: "TypeScript", icon: <TypescriptPlain size={ICON_SIZE} /> },
+  { name: "SQL", icon: <SqliteOriginal size={ICON_SIZE} /> },
   {
     name: "AWS",
     icon: <AmazonwebservicesPlainWordmark size={ICON_SIZE} color="#FFFFFF" />,
   },
+  { name: "React", icon: <ReactOriginal size={ICON_SIZE} /> },
+  // { name: "Next.js", icon: <NextjsOriginal size={ICON_SIZE} /> },
+  { name: "CSS", icon: <Css3Plain size={ICON_SIZE} /> },
 ];
 
 // 2021 is when professional software development experience started (Altvia Solutions).
@@ -44,7 +49,10 @@ export default function TechStackCard() {
             <TechTile key={name} name={name} icon={icon} />
           ))}
         </div>
-        <StatTile value={yearsExperience} label="Years of Professional Experience" />
+        <StatTile
+          value={yearsExperience}
+          label="Years of Professional Experience"
+        />
       </div>
       <SkillsMarquee />
     </section>
