@@ -16,6 +16,7 @@ const Hero = () => {
           alt="headshot of Nico"
           width={500}
           height={500}
+          loading="eager"
         />
         <div className={styles.content}>
           <TextGenerateEffect
