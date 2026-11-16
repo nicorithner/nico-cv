@@ -1,14 +1,14 @@
 import { test, expect } from "@playwright/test";
 
 const TECH_TILES = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "CSS",
   "Java",
   "Ruby",
+  "Python",
+  "TypeScript",
+  "SQL",
   "AWS",
+  "React",
+  "CSS",
 ];
 
 const CAREER_START_YEAR = 2021;
