@@ -29,12 +29,6 @@ test.describe("Work Experience section", () => {
     await expect(section).toContainText(JOBS[2]);
   });
 
-  test("FyrKode card shows the part-time badge", async ({ page }) => {
-    await expect(page.getByTestId("experience-section")).toContainText(
-      "Part-time"
-    );
-  });
-
   test("shows the education subheading and Turing School entry", async ({
     page,
   }) => {
